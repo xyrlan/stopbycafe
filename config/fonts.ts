@@ -17,6 +17,6 @@ export const fontDancingScript = FontDancingScript({
 
 export const fontNunito = FontNunito({
   subsets: ["latin"],
-  fallback: ["Inter", "sans-serif"],
+  fallback: ["Inter", "sans-serif", "Nunito Sans"],
   variable: "--font-nunito",
 });
