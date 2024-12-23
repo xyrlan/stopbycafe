@@ -6,7 +6,6 @@ import ScrollDown from "@/components/hero-section/scrolldown";
 import Logo from "@/components/logo";
 
 export default function Home() {
-
   return (
     <section className="relative w-full h-screen overflow-hidden flex flex-col justify-between items-center px-2">
       <div className="z-20 flex flex-col items-center">

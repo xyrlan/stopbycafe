@@ -45,39 +45,40 @@ const BackgroundCarousel = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none">
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black z-10 bg-opacity-60"></div>
+      <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black z-10 bg-opacity-60" />
       <AnimatePresence mode="popLayout">
-        {images.map((image, index) => (
-          index === currentIndex && (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 1 }}
-              className="absolute inset-0 w-full h-full"
-              onAnimationStart={handleAnimationStart}
-              onAnimationComplete={handleAnimationEnd}
-            >
+        {images.map(
+          (image, index) =>
+            index === currentIndex && (
               <motion.div
-                key={`zoom-${index}`}
-                initial={{ scale: 1.2 }}
-                animate={{ scale: 1 }}
-                transition={{ duration: 6 }}
+                key={index}
+                animate={{ opacity: 1 }}
                 className="absolute inset-0 w-full h-full"
+                exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                onAnimationComplete={handleAnimationEnd}
+                onAnimationStart={handleAnimationStart}
               >
-                <img
-                  src={image.src}
-                  alt={image.alt}
-                  className="w-full h-full object-cover"
-                />
+                <motion.div
+                  key={`zoom-${index}`}
+                  animate={{ scale: 1 }}
+                  className="absolute inset-0 w-full h-full"
+                  initial={{ scale: 1.2 }}
+                  transition={{ duration: 6 }}
+                >
+                  <img
+                    alt={image.alt}
+                    className="w-full h-full object-cover"
+                    src={image.src}
+                  />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          )
-        ))}
+            ),
+        )}
       </AnimatePresence>
     </div>
-  )
-}
+  );
+};
 
-export default BackgroundCarousel
+export default BackgroundCarousel;
