@@ -39,8 +39,8 @@ export default function RootLayout({
           fontNunito.variable,
         )}
       >
-        <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
-          <div className="relative flex flex-col h-screen">
+        <Providers themeProps={{ attribute: "class", defaultTheme: "mytheme" }}>
+          <div className="relative flex flex-col ">
             {/* <Navbar /> */}
             <main className="">{children}</main>
           </div>

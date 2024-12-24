@@ -14,6 +14,7 @@ export default {
         mono: ["var(--font-mono)"],
         dancingScript: ["var(--font-dancing-script)"],
         nunito: ["var(--font-nunito)"],
+        mindset: ["Mindset"],
       },
     },
   },
@@ -68,7 +69,7 @@ export default {
           },
 
           background: {
-            DEFAULT: "#f2c2cd", // Rosa claro como fundo
+            DEFAULT: "#FCDADA", // Rosa claro como fundo
             foreground: "#533833" // Texto marrom escuro
           },
 

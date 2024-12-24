@@ -35,44 +35,38 @@ const BackgroundCarousel = () => {
     return () => clearInterval(interval);
   }, [images.length, isAnimating]);
 
-  const handleAnimationStart = () => {
-    setIsAnimating(true);
-  };
-
-  const handleAnimationEnd = () => {
-    setIsAnimating(false);
-  };
+  const handleAnimationStart = () => setIsAnimating(true);
+  const handleAnimationEnd = () => setIsAnimating(false);
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none">
-      <div className="absolute inset-0 w-full h-full flex items-center justify-center bg-black z-10 bg-opacity-60" />
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-primary bg-opacity-60 z-10" />
+
+      {/* Image Carousel */}
       <AnimatePresence mode="popLayout">
         {images.map(
           (image, index) =>
             index === currentIndex && (
               <motion.div
                 key={index}
-                animate={{ opacity: 1 }}
-                className="absolute inset-0 w-full h-full"
-                exit={{ opacity: 0 }}
+                className="absolute inset-0"
                 initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
                 transition={{ duration: 1 }}
-                onAnimationComplete={handleAnimationEnd}
                 onAnimationStart={handleAnimationStart}
+                onAnimationComplete={handleAnimationEnd}
               >
-                <motion.div
+                <motion.img
                   key={`zoom-${index}`}
-                  animate={{ scale: 1 }}
-                  className="absolute inset-0 w-full h-full"
+                  src={image.src}
+                  alt={image.alt}
+                  className="absolute inset-0 w-full h-full object-cover"
                   initial={{ scale: 1.2 }}
+                  animate={{ scale: 1 }}
                   transition={{ duration: 6 }}
-                >
-                  <img
-                    alt={image.alt}
-                    className="w-full h-full object-cover"
-                    src={image.src}
-                  />
-                </motion.div>
+                />
               </motion.div>
             ),
         )}

@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@font-face {
+  font-family: 'Mindset';
+  src: url('/mindset-regular-1.ttf') format('truetype');
+  font-weight: normal; /* Defina o peso conforme necessário */
+  font-style: normal;  /* Defina o estilo conforme necessário */
+}

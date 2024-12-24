@@ -6,7 +6,7 @@ import { siteConfig } from "@/config/site";
 
 const HeroNavbar = () => {
   return (
-    <nav className="z-20 flex items-center gap-2 md:gap-5 uppercase font-bold  my-5">
+    <nav className="z-20 flex items-center gap-2 md:gap-5 uppercase font-bold my-5">
       {siteConfig.navItems.map((item, index) => (
         <React.Fragment key={item.href}>
           <Link
