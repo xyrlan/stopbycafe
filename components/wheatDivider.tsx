@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 const WheatDivider = () => {
   return (
-    <div className="flex gap-3 items-center justify-center my-3 ">
+    <div className="flex gap-3 items-center justify-center my-3 select-none">
       <Divider className="bg-default w-7 mr-2 h-px" orientation="horizontal" />
       <Image
         alt="Wheat icon"

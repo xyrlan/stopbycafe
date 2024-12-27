@@ -1,4 +1,5 @@
 import clsx from 'clsx'
+import Image from 'next/image'
 import React from 'react'
 
 const PhotosNDescriptions = () => {
@@ -26,19 +27,24 @@ const PhotosNDescriptions = () => {
   ]
 
   return (
-    <div className='grid md:grid-cols-2'>
+    <div className='grid lg:grid-cols-2'>
       {data.map((item, index) => (
-        <div key={index} className={clsx('flex max-md:flex-col items-center justify-center', index > 1 && 'flex-row-reverse')}>
-          <img src={item.image} alt={item.title} className={clsx(
-            'flex-1 w-full h-full object-cover shadow-lg select-none',
-            index > 1 ? ' rounded-b-full' : 'rounded-t-full',
-          )} />
-          <div className='flex-1 w-full'>
-            <div className='flex flex-col items-center text-center gap-5 md:p-20 p-10'>
-              <h2 className='text-primary-600 text-xl font-bold mt-5 uppercase'>{item.title}</h2>
+        <div key={index} className={clsx(' flex max-lg:flex-col items-center justify-center', index > 1 && 'flex-row-reverse')}>
+
+          <div className='flex-1'>
+            <Image src={item.image} alt={item.title} width={400} height={400} className={clsx(
+              ' object-cover shadow-lg select-none',
+              index > 1 ? ' rounded-b-full' : 'rounded-t-full',
+            )} />
+          </div>
+
+          <div className='flex-1'>
+            <div className='flex flex-col items-center text-center px-10 max-md:py-10 max-w-lg'>
+              <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
               <p className='mt-5 leading-tight font-dancingScript italic '>{item.description}</p>
             </div>
           </div>
+
         </div>
       ))}
     </div>
