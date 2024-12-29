@@ -59,7 +59,7 @@ const ProductsCarousel = () => {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           onDragEnd={handleDragEnd}
-          className="flex md:flex-row flex-col justify-between items-center max-md:gap-5"
+          className="flex md:flex-row flex-col justify-center items-center gap-20 max-md:gap-5"
         >
           {/* Image Section */}
           <motion.div
@@ -68,10 +68,10 @@ const ProductsCarousel = () => {
             animate={{ x: 0 }}
             exit={{ x: -50 }}
             transition={{ duration: 0.5 }}
-            className="flex-1 flex items-center justify-center"
+            className=" flex items-center justify-center"
           >
             <Image
-              className="md:h-[400px] h-[250px] w-auto object-contain select-none"
+              className="md:h-[300px] h-[200px] w-auto object-contain select-none"
               src={data[selectedIndex].src}
               alt={data[selectedIndex].alt}
               draggable={false}
@@ -80,7 +80,7 @@ const ProductsCarousel = () => {
             />
           </motion.div>
           {/* Text Section */}
-          <div className="flex-1 flex items-center justify-center">
+          <div className=" flex items-center justify-center">
             <div className="flex flex-col items-center gap-2 justify-center max-w-lg text-center">
               <h3 className="text-secondary uppercase my-2 md:text-4xl text-2xl font-bold">
                 {data[selectedIndex].title}
@@ -95,7 +95,7 @@ const ProductsCarousel = () => {
       </AnimatePresence>
       {/* Navigation Buttons */}
       <div className="flex justify-center my-1">
-        <Button size="lg" color="secondary" className=" py-2 px-4 ">
+        <Button size="lg" color="default" className="rounded-xl py-2 px-4 ">
           View Full Menu
         </Button>
       </div>

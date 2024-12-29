@@ -12,7 +12,7 @@ const AboutSection = () => {
       <PhotosNDescriptions />
 
 
-      <div className='flex md:flex-row flex-col justify-between items-center mt-20 sm:mt-40 gap-10'>
+      <div className='flex md:flex-row flex-col justify-center items-center mt-20 sm:mt-40 gap-10 md:gap-20'>
         <AboutText />
         <AboutImage />
       </div>

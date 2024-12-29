@@ -4,7 +4,7 @@ import WheatDividerBlack from '../wheatDividerBlack'
 
 const AboutText = () => {
   return (
-    <div className='flex-1 flex justify-center items-center'>
+    <div className='flex justify-center items-center'>
       <div className='max-w-md text-center'>
         <h2 className={clsx(
           'text-primary-600 uppercase my-2 md:text-4xl text-2xl font-bold',

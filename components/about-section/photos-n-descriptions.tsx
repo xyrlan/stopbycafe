@@ -29,21 +29,39 @@ const PhotosNDescriptions = () => {
   return (
     <div className='grid lg:grid-cols-2'>
       {data.map((item, index) => (
-        <div key={index} className={clsx(' flex max-lg:flex-col items-center justify-center', index > 1 && 'flex-row-reverse')}>
+        <div key={index} className={clsx('grid grid-cols-2 items-center justify-center')}>
 
-          <div className='flex-1'>
-            <Image src={item.image} alt={item.title} width={400} height={400} className={clsx(
-              ' object-cover shadow-lg select-none',
-              index > 1 ? ' rounded-b-full' : 'rounded-t-full',
+          {index > 1 ? (
+ <>
+
+<div className='flex flex-col items-center text-center  max-w-sm'>
+   <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
+   <p className='mt-5 leading-tight font-dancingScript italic'>{item.description}</p>
+ </div>
+
+ <Image src={item.image} alt={item.title} width={300} height={300} className={clsx(
+   'object-cover shadow-lg select-none',
+   index > 1 ? 'rounded-b-full' : 'rounded-t-full',
+ )} />
+
+ </>
+          ) : (
+            <>
+
+            <Image src={item.image} alt={item.title} width={300} height={300} className={clsx(
+              'object-cover shadow-lg select-none',
+              index > 1 ? 'rounded-b-full' : 'rounded-t-full',
             )} />
-          </div>
-
-          <div className='flex-1'>
-            <div className='flex flex-col items-center text-center px-10 max-md:py-10 max-w-lg'>
+           
+            <div className='flex flex-col items-center text-center  max-w-sm'>
               <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
-              <p className='mt-5 leading-tight font-dancingScript italic '>{item.description}</p>
+              <p className='mt-5 leading-tight font-dancingScript italic'>{item.description}</p>
             </div>
-          </div>
+           
+            </>
+          )}
+
+
 
         </div>
       ))}
