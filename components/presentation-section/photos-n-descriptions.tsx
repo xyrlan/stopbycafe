@@ -12,7 +12,7 @@ const PhotosNDescriptions = () => {
     {
       title: 'Our desserts',
       description: 'We are a coffee shop that loves to make you feel good. Our desserts are made with the finest ingredients and are sure to impress your taste buds.',
-      image: '/images/aboutpic2.jpg',
+      image: '/images/aboutpic1.jpg',
     },
     {
       title: 'Handmade with love',
@@ -27,44 +27,39 @@ const PhotosNDescriptions = () => {
   ]
 
   return (
-    <div className='grid lg:grid-cols-2'>
+    <div className='grid lg:grid-cols-4 '>
+
       {data.map((item, index) => (
-        <div key={index} className={clsx('grid grid-cols-2 items-center justify-center')}>
 
-          {index > 1 ? (
- <>
-
-<div className='flex flex-col items-center text-center  max-w-sm'>
-   <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
-   <p className='mt-5 leading-tight font-dancingScript italic'>{item.description}</p>
- </div>
-
- <Image src={item.image} alt={item.title} width={300} height={300} className={clsx(
-   'object-cover shadow-lg select-none',
-   index > 1 ? 'rounded-b-full' : 'rounded-t-full',
- )} />
-
- </>
-          ) : (
-            <>
-
-            <Image src={item.image} alt={item.title} width={300} height={300} className={clsx(
-              'object-cover shadow-lg select-none',
-              index > 1 ? 'rounded-b-full' : 'rounded-t-full',
-            )} />
-           
-            <div className='flex flex-col items-center text-center  max-w-sm'>
+        index > 1 ? (
+          <React.Fragment key={index}>
+            <div className='flex flex-col justify-center items-center text-center max-w-sm px-10'>
               <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
               <p className='mt-5 leading-tight font-dancingScript italic'>{item.description}</p>
             </div>
-           
-            </>
-          )}
 
+            <Image src={item.image} alt={item.title} width={600} height={600} className={clsx(
+              'object-cover shadow-lg select-none',
+              // index > 1 ? 'rounded-b-full' : 'rounded-t-full',
+            )} />
 
+          </React.Fragment>
+        ) : (
+          <React.Fragment key={index}>
+            <Image src={item.image} alt={item.title} width={600} height={600} className={clsx(
+              'object-cover shadow-lg select-none',
+              // index > 1 ? 'rounded-b-full' : 'rounded-t-full',
+            )} />
 
-        </div>
+            <div className='flex flex-col justify-center items-center text-center max-w-sm px-10'>
+              <h2 className='text-primary-600 text-xl font-bold uppercase'>{item.title}</h2>
+              <p className='mt-5 leading-tight font-dancingScript italic'>{item.description}</p>
+            </div>
+
+          </React.Fragment>
+        )
       ))}
+
     </div>
   )
 }

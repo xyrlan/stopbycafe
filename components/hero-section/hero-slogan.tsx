@@ -22,10 +22,10 @@ const HeroSlogan = () => {
       >
         Welcome to Stop by Café
       </h1>
-      <h2 className={clsx("uppercase my-2 md:text-4xl text-2xl ")}>
+      {/* <h2 className={clsx("uppercase my-2 md:text-4xl text-2xl ")}>
         We are excited to cook
         <br /> for you today!
-      </h2>
+      </h2> */}
       <WheatDivider />
     </div>
   );
