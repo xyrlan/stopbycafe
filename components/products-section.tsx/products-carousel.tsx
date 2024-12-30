@@ -20,14 +20,14 @@ const ProductsCarousel = () => {
       title: "Espresso",
       description:
         "Espresso is a type of coffee that is made by forcing hot water through finely ground coffee beans. It is a popular drink in many countries, including the United States, where it is often served with milk and sugar.",
-      src: "/images/product2.png",
+      src: "/images/product3.png",
       alt: "Espresso stop by cafe",
     },
     {
       title: "Iced Coffee",
       description:
         "Iced coffee is a type of coffee that is made by adding ice to the ground coffee. It is a popular drink in many countries, including the United States, where it is often served with milk and sugar.",
-      src: "/images/product3.png",
+      src: "/images/product2.png",
       alt: "Iced coffee stop by cafe",
     },
   ];

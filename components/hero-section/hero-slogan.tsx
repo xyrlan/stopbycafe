@@ -16,7 +16,7 @@ const HeroSlogan = () => {
     >
       <h1
         className={clsx(
-          "font-dancingScript md:text-5xl text-4xl text-secondary brightness-125 my-3",
+          "font-dancingScript md:text-5xl text-4xl text-default brightness-125 my-3",
           fontDancingScript.variable,
         )}
       >

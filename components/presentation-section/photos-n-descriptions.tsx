@@ -1,6 +1,8 @@
+import { fontDancingScript } from '@/config/fonts'
 import clsx from 'clsx'
 import Image from 'next/image'
 import React from 'react'
+import { subtitle } from '../primitives'
 
 const data = [
   {
@@ -26,19 +28,19 @@ const data = [
 ]
 
 const Item = ({ title, description, image, isReverse }: any) => (
-  <div className={clsx('flex flex-col lg:flex-row max-md:gap-5', isReverse && 'lg:flex-row-reverse')}>
+  <div className={clsx('flex flex-col lg:flex-row max-lg:gap-5 max-lg:items-center', isReverse && 'lg:flex-row-reverse')}>
     <div className="flex-1">
       <Image src={image} alt={title} width={600} height={600} className="object-cover shadow-lg select-none" />
     </div>
     <div className="flex-1 flex flex-col justify-center text-center gap-5">
-        <h2 className="text-primary-600 text-xl font-bold uppercase">{title}</h2>
-        <p className="leading-tight font-dancingScript italic px-10">{description}</p>
+        <h2 className={clsx("text-secondary uppercase font-dancingScript", fontDancingScript.variable, subtitle())}>{title}</h2>
+        <p className="leading-tight italic px-10">{description}</p>
     </div>
   </div>
 )
 
 const PhotosNDescriptions = () => (
-  <div className="grid lg:grid-cols-2 gap-5">
+  <div className="grid lg:grid-cols-2 max-lg:gap-5">
     {data.map((item, index) => (
       <React.Fragment key={index}>
         <div className="flex flex-col items-center">
