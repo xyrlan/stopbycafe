@@ -86,31 +86,34 @@ const ProductsCarousel = () => {
                 {data[selectedIndex].title}
               </h3>
               <WheatDivider />
-              <p className="text-default italic my-5">
+              <p className="text-default italic my-5 max-w-sm">
                 {data[selectedIndex].description}
               </p>
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
-      {/* Navigation Buttons */}
-      <div className="flex justify-center my-1">
-        <Button size="lg" color="default" className="rounded-xl py-2 px-4 ">
-          View Full Menu
-        </Button>
-      </div>
+
       <div className="flex justify-center gap-4 mt-10">
         {data.map((_, index) => (
           <Button
             key={index}
             onClick={() => setSelectedIndex(index)}
             className={`w-4 h-4 rounded-full ${selectedIndex === index
-                ? "bg-secondary-500"
-                : "bg-default hover:bg-default-400"
+              ? "bg-secondary-500"
+              : "bg-default hover:bg-default-400"
               }`}
           />
         ))}
       </div>
+
+      {/* Navigation Buttons */}
+      <div className="flex justify-center mt-10 my-1">
+        <Button size="lg" color="default" className="rounded-xl py-2 px-4 ">
+          View Full Menu
+        </Button>
+      </div>
+
     </div>
   );
 };

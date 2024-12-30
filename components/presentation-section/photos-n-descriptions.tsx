@@ -26,7 +26,7 @@ const data = [
 ]
 
 const Item = ({ title, description, image, isReverse }: any) => (
-  <div className={clsx('flex flex-col lg:flex-row', isReverse && 'lg:flex-row-reverse')}>
+  <div className={clsx('flex flex-col lg:flex-row max-md:gap-5', isReverse && 'lg:flex-row-reverse')}>
     <div className="flex-1">
       <Image src={image} alt={title} width={600} height={600} className="object-cover shadow-lg select-none" />
     </div>
@@ -38,7 +38,7 @@ const Item = ({ title, description, image, isReverse }: any) => (
 )
 
 const PhotosNDescriptions = () => (
-  <div className="grid lg:grid-cols-2 ">
+  <div className="grid lg:grid-cols-2 gap-5">
     {data.map((item, index) => (
       <React.Fragment key={index}>
         <div className="flex flex-col items-center">

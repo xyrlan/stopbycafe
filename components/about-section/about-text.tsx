@@ -12,7 +12,7 @@ const AboutText = () => {
           ABOUT US
         </h2>
         <WheatDividerBlack />
-        <p className='mt-10 leading-tight italic'>
+        <p className='mt-10 leading-tight italic max-w-xs'>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae soluta repellat quasi ab a! Nihil perspiciatis quibusdam quae illum! Doloribus natus sed aliquid eaque consectetur ab optio, atque laudantium ut?.
         </p>
       </div>
