@@ -5,6 +5,7 @@ import { title } from "../primitives";
 
 import { fontDancingScript } from "@/config/fonts";
 import WheatDivider from "../wheatDivider";
+import { Title } from "../title";
 
 const HeroSlogan = () => {
   return (
@@ -14,14 +15,9 @@ const HeroSlogan = () => {
         title(),
       )}
     >
-      <h1
-        className={clsx(
-          "font-dancingScript md:text-5xl text-4xl text-default brightness-125 my-3",
-          fontDancingScript.variable,
-        )}
-      >
+      <Title>
         Welcome to Stop by Café
-      </h1>
+      </Title>
       {/* <h2 className={clsx("uppercase my-2 md:text-4xl text-2xl ")}>
         We are excited to cook
         <br /> for you today!

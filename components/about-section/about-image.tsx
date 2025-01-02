@@ -5,21 +5,21 @@ import { motion } from 'framer-motion'
 
 const AboutImage = () => {
   return (
-    <motion.div className='relative group overflow-hidden flex justify-center select-none'>
+    <motion.div className='relative overflow-hidden select-none'>
       <Image
         alt="Bakery counter"
-        className="rounded-r-full absolute group-hover:opacity-0 duration-300 transition-all group-hover:translate-x-5 max-lg:max-h-[300px] object-cover"
-        height={350}
+        className=" duration-300 transition-all group-hover:translate-x-5 max-lg:max-h-[300px] object-cover"
+        height={500}
         src="/images/aboutpic5.avif"
-        width={350}
+        width={500}
       />
-      <Image
+      {/* <Image
         alt="Bakery baking"
-        className="rounded-r-full max-lg:max-h-[300px] object-cover"
-        height={350}
+        className=" max-lg:max-h-[300px] object-cover"
+        height={500}
         src="/images/aboutpic6.avif"
-        width={350}
-      />
+        width={500}
+      /> */}
     </motion.div>
   )
 }

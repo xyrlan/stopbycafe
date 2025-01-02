@@ -4,6 +4,9 @@ import React, { useState } from "react";
 import WheatDivider from "../wheatDivider";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@nextui-org/button";
+import { Title } from "../title";
+import { title } from "../primitives";
+import WheatDividerBlack from "../wheatDividerBlack";
 
 const ProductsCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -82,11 +85,13 @@ const ProductsCarousel = () => {
           {/* Text Section */}
           <div className=" flex items-center justify-center">
             <div className="flex flex-col items-center gap-2 justify-center max-w-lg text-center">
-              <h3 className="text-secondary uppercase my-2 md:text-4xl text-2xl font-bold">
-                {data[selectedIndex].title}
-              </h3>
-              <WheatDivider />
-              <p className="text-default italic my-5 max-w-sm">
+              <div className={title()}>
+                <Title className="text-primary my-2 font-bold">
+                  {data[selectedIndex].title}
+                </Title>
+              </div>
+              <WheatDividerBlack />
+              <p className=" italic my-5 max-w-sm">
                 {data[selectedIndex].description}
               </p>
             </div>
@@ -100,7 +105,7 @@ const ProductsCarousel = () => {
             key={index}
             onClick={() => setSelectedIndex(index)}
             className={`w-4 h-4 rounded-full ${selectedIndex === index
-              ? "bg-secondary-500"
+              ? "bg-primary"
               : "bg-default hover:bg-default-400"
               }`}
           />
@@ -109,7 +114,7 @@ const ProductsCarousel = () => {
 
       {/* Navigation Buttons */}
       <div className="flex justify-center mt-10 my-1">
-        <Button size="lg" color="default" className="rounded-xl py-2 px-4 ">
+        <Button size="lg" color="secondary" className="rounded-full py-2 px-4 ">
           View Full Menu
         </Button>
       </div>

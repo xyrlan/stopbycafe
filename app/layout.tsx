@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
-import { fontNunito } from "@/config/fonts";
+import { fontRoboto } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
 
 export const metadata: Metadata = {
@@ -36,8 +36,8 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-nunito antialiased",
-          fontNunito.variable,
+          "min-h-screen bg-background font-roboto antialiased",
+          fontRoboto.variable,
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "mytheme" }}>
