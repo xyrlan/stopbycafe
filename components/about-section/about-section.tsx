@@ -18,20 +18,20 @@ const AboutSection = () => {
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo sed nam quos ducimus. Maxime dignissimos adipisci nulla voluptatum.</p>
           </div>
         </div>
-        <div className={'my-4'}>
+        <div className={'my-10'}>
           <h2 className={'text-6xl font-extrabold text-primary'}>
             Good things come to those
             <br />
             <span className='text-secondary'> who bake </span> for others.
           </h2>
         </div>
-        <div className=' flex md:flex-row flex-col justify-between items-center gap-10 md:gap-20'>
+        <div className=' flex md:flex-row flex-col justify-between gap-10 md:gap-20'>
           <Image
             alt="Bakery baking"
-            className=" max-lg:max-h-[300px] w-full object-cover"
-            height={800}
+            className=" w-full max-md:max-h[300px] max-h-[600px] object-cover shadow"
+            height={600}
             src="/images/aboutpic6.avif"
-            width={800}
+            width={600}
           />
           <div className='flex flex-col gap-10 w-full'>
             <AboutText />

@@ -7,12 +7,12 @@ import { motion } from 'framer-motion'
 
 const AboutTitle = () => {
     return (
-        <div className={clsx(title(), "flex-1 flex items-center my-10 gap-5 px-2")}>
+        <motion.div initial={{ opacity: 0 }} transition={{ duration: 1 }} whileInView={{ opacity: 1 }} className={clsx(title(), "flex-1 flex items-center my-10 gap-5 px-2")}>
             <Title className={'text-nowrap text-primary'}>
                 About Us
             </Title>
-            <motion.div className='h-0.5 bg-primary bg-opacity-20' initial={{ width: 0, opacity: 0 }} transition={{ duration: 2 }} whileInView={{ width: '100%', opacity: 1 }} />
-        </div>
+            <motion.div className='h-0.5 bg-primary bg-opacity-20' initial={{ width: 0 }} transition={{ duration: 2 }} whileInView={{ width: '100%' }} />
+        </motion.div>
     )
 }
 

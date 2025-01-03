@@ -91,7 +91,7 @@ const ProductsCarousel = () => {
                 </Title>
               </div>
               <WheatDividerBlack />
-              <p className=" italic my-5 max-w-sm">
+              <p className="max-w-sm">
                 {data[selectedIndex].description}
               </p>
             </div>

@@ -4,7 +4,7 @@ import PhotosNDescriptions from '../presentation-section/photos-n-descriptions';
 const PresentationSection = () => {
 
   return (
-    <section id='presentation' className='lg:container mx-auto overflow-hidden py-20 '>
+    <section id='presentation' className='lg:max-w-7xl mx-auto overflow-hidden py-20 '>
       <PhotosNDescriptions />
     </section>
   )
