@@ -70,8 +70,9 @@ export default {
           },
 
           background: {
-            DEFAULT: "#FCDADA", // Rosa claro como fundo
-            foreground: "#533833" // Texto marrom escuro
+            DEFAULT: "#EADBD4", // Rosa claro como fundo
+            foreground: "#533833", // Texto marrom escuro
+            rosa: "#FCDADA",
           },
 
           focus: "#ee4e4e", // Mantendo o vermelho para destaque

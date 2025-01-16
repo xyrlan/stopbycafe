@@ -5,19 +5,23 @@ import { motion, AnimatePresence } from "framer-motion";
 const BackgroundCarousel = () => {
   const images = [
     {
-      src: "/images/heroimage1.jpg",
+      src: "/pics/1.jpg",
       alt: "Padeiro",
     },
     {
-      src: "/images/heroimage2.jpg",
+      src: "/pics/2.jpg",
       alt: "Stop by Café",
     },
     {
-      src: "/images/heroimage3.jpg",
+      src: "/pics/3.jpg",
       alt: "Stop by Café",
     },
     {
-      src: "/images/heroimage4.jpg",
+      src: "/pics/4.jpg",
+      alt: "Stop by Café",
+    },
+    {
+      src: "/pics/5.jpg",
       alt: "Stop by Café",
     },
   ];

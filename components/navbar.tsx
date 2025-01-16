@@ -8,56 +8,20 @@ import {
   NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
-import { Button } from "@nextui-org/button";
-import { Kbd } from "@nextui-org/kbd";
 import { Link } from "@nextui-org/link";
-import { Input } from "@nextui-org/input";
-import { link as linkStyles } from "@nextui-org/theme";
 import NextLink from "next/link";
 import clsx from "clsx";
-import { motion } from "framer-motion"
 
 import { siteConfig } from "@/config/site";
-import { ThemeSwitch } from "@/components/theme-switch";
-import {
-  TwitterIcon,
-  GithubIcon,
-  DiscordIcon,
-  HeartFilledIcon,
-  SearchIcon,
-} from "@/components/icons";
 import React, { useState } from "react";
-import Logo from "./logo";
 import Image from "next/image";
 
 export const Navbar = ({ visible, isNavOnHero }: any) => {
   const [isOpen, setIsOpen] = useState(false)
 
-  const searchInput = (
-    <Input
-      aria-label="Search"
-      size="sm"
-      classNames={{
-        inputWrapper: "bg-secondary-100",
-        input: "text-sm",
-      }}
-      // endContent={
-      //   <Kbd className="hidden lg:inline-block" keys={["command"]}>
-      //     K
-      //   </Kbd>
-      // }
-      labelPlacement="outside"
-      placeholder="Search..."
-      startContent={
-        <SearchIcon className="text-base text-default-400 pointer-events-none flex-shrink-0" />
-      }
-      type="search"
-    />
-  );
-
   return (
     <NextUINavbar isMenuOpen={isOpen} maxWidth="xl" className={clsx(
-      "bg-primary border-b-0",
+      "bg-primary border-b-0 py-4",
       "fixed top-0 duration-200 transition-all z-50",
       // visible && !isOpen || isOpen ? '-translate-y-0' : '-translate-y-40',
       isNavOnHero ? "opacity-0 -translate-y-20" : "opacity-100 -translate-y-0"
@@ -110,9 +74,9 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
 
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex basis-1/5" justify="end">
+      {/* <NavbarContent className="hidden sm:flex basis-1/5" justify="end">
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-      </NavbarContent>
+      </NavbarContent> */}
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
         {/* <Link isExternal aria-label="Instagram" href={siteConfig.links.github}>

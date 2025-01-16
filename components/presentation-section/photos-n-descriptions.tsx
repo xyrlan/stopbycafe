@@ -1,70 +1,119 @@
-import { fontDancingScript } from '@/config/fonts'
+"use client"
 import clsx from 'clsx'
 import Image from 'next/image'
 import React from 'react'
-import { subtitle } from '../primitives'
-import { image } from '@nextui-org/theme'
 import WheatDividerBlack from '../wheatDividerBlack'
-import WheatDivider from '../wheatDivider'
 import { Title } from '../title'
+import { motion } from 'framer-motion'
 
 const data = [
   {
     title: 'Treat yourself',
     description: 'We are here to treat you to the best of our coffees and espressos. We believe that the best coffee is the one that makes you feel good.',
-    image: '/images/aboutpic1.jpg',
-    image2: '/images/aboutpic3.jpg'
+    image: '/docinhos/1.jpg',
+    image2: '/docinhos/2.jpg'
   },
   {
-    title: 'Crafted with care',
+    title: 'Baked with passion',
     description: 'We are a coffee shop that loves to make you feel good. Our desserts are made with the finest ingredients and are sure to impress your taste buds.',
-    image: '/images/aboutpic3.jpg',
-    image2: '/images/aboutpic1.jpg'
+    image: '/docinhos/3.jpg',
+    image2: '/docinhos/4.jpg'
 
   },
   {
     title: 'Handmade with love',
     description: 'We are committed to providing you with the best coffee and espresso experience. We believe that the best coffee is the one that makes you feel good.',
-    image: '/images/aboutpic3.jpg',
-    image2: '/images/aboutpic4.jpg'
+    image: '/docinhos/5.jpg',
+    image2: '/docinhos/6.jpg'
   },
   {
-    title: 'Made with heart',
+    title: 'Whisked with warmth',
     description: 'We are a coffee shop that loves to make you feel good. Our desserts are made with the finest ingredients and are sure to impress your taste buds.',
-    image: '/images/aboutpic4.jpg',
-    image2: '/images/aboutpic3.jpg'
+    image: '/docinhos/7.jpg',
+    image2: '/docinhos/8.jpg'
+  },
+
+]
+const data2 = [
+  {
+    title: 'Where passion meets perfection',
+    description: 'We are here to treat you to the best of our coffees and espressos. We believe that the best coffee is the one that makes you feel good.',
+    image: '/docinhos/9.jpg',
+    image2: '/docinhos/10.jpg'
+  },
+  {
+    title: 'Sweetness in every bite',
+    description: 'We are a coffee shop that loves to make you feel good. Our desserts are made with the finest ingredients and are sure to impress your taste buds.',
+    image: '/docinhos/11.jpg',
+    image2: '/docinhos/12.jpg'
+
+  },
+  {
+    title: 'Flavors that tell a story',
+    description: 'We are committed to providing you with the best coffee and espresso experience. We believe that the best coffee is the one that makes you feel good.',
+    image: '/docinhos/13.jpg',
+    image2: '/docinhos/14.jpg'
+  },
+  {
+    title: 'A sprinkle of joy in every creation',
+    description: 'We are a coffee shop that loves to make you feel good. Our desserts are made with the finest ingredients and are sure to impress your taste buds.',
+    image: '/docinhos/15.jpg',
+    image2: '/docinhos/16.jpg'
   },
 ]
 
-const Item = ({ title, description, image, image2, isReverse }: any) => (
+const Item = ({ title, description, image, image2, isReverse, index }: any) => (
   <div className={clsx('flex flex-col lg:flex-row max-lg:gap-5 max-lg:items-center overflow-hidden', isReverse && 'lg:flex-row-reverse')}>
-    <div className={clsx("flex-1 relative group overflow-hidden flex justify-center select-none h-[250px]", isReverse ? "rounded-b-full" : " rounded-t-full")}>
-      <Image src={image} alt={title} width={600} height={600} className="object-cover shadow-lg absolute group-hover:opacity-0 duration-300 transition-all h-full" />
-      <Image src={image2} alt={title} width={600} height={600} className={clsx("object-cover h-full")} />
+    <div className={clsx("flex-1 relative group overflow-hidden flex justify-center select-none h-[250px]")}>
+      <Image src={image} alt={title} width={600} height={600} className="object-cover shadow-lg absolute group-hover:opacity-0 duration-300 transition-all h-full z-10" />
+      <Image src={image2} alt={title} width={600} height={600} className={clsx("object-cover h-full group-hover:scale-110 transition-all duration-[4000ms]")} />
     </div>
-    <div className="flex-1 flex flex-col justify-center text-center gap-2">
-      <Title className={"text-primary font-semibold text-3xl"}>{title}</Title>
-      {/* <p className="leading-tight italic px-10">{description}</p> */}
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      className="flex-1 flex flex-col justify-center text-center gap-2">
+      <Title className={"text-primary font-semibold text-3xl px-3"}>{title}</Title>
       <WheatDividerBlack />
-    </div>
+    </motion.div>
   </div>
 )
 
 const PhotosNDescriptions = () => (
-  <div className="grid lg:grid-cols-2 max-lg:gap-5">
-    {data.map((item, index) => (
-      <React.Fragment key={index}>
-        <div className="flex flex-col items-center">
-          <Item
-            title={item.title}
-            description={item.description}
-            image={item.image}
-            image2={item.image2}
-            isReverse={index > 1} // reverse layout for items after the second
-          />
-        </div>
-      </React.Fragment>
-    ))}
+  <div className='max-md:hidden'>
+    <div className="grid lg:grid-cols-2 max-lg:gap-5">
+      {data.map((item, index) => (
+        <React.Fragment key={index}>
+          <div className="flex flex-col items-center">
+            <Item
+              title={item.title}
+              description={item.description}
+              image={item.image}
+              image2={item.image2}
+              isReverse={index > 1} // reverse layout for items after the second
+              index={index}
+            />
+          </div>
+        </React.Fragment>
+      ))}
+    </div>
+    <div className="grid lg:grid-cols-2 max-lg:gap-5">
+      {data2.map((item, index) => (
+        <React.Fragment key={index}>
+          <div className="flex flex-col items-center">
+            <Item
+              title={item.title}
+              description={item.description}
+              image={item.image}
+              image2={item.image2}
+              isReverse={index > 1} // reverse layout for items after the second
+              index={index + 2}
+            />
+          </div>
+        </React.Fragment>
+      ))}
+    </div>
   </div>
 )
 
