@@ -26,7 +26,7 @@ const AboutSection = () => {
   return (
     <section className="overflow-hidden py-12 md:py-24 px-6" id="about">
       <div className="sm:max-w-7xl mx-auto">
-        <div className="flex items-center">
+        <div className="flex flex-row max-md:flex-col md:gap-4 items-center">
           <AboutTitle />
           <div className="px-4 max-w-md text-primary">
             <p className="tracking-wider">

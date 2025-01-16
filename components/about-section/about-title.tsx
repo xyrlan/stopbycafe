@@ -8,7 +8,10 @@ import { title } from "../primitives";
 const AboutTitle = () => {
   return (
     <motion.div
-      className={clsx(title(), "flex-1 flex items-center my-10 gap-5 px-2")}
+      className={clsx(
+        title(),
+        "flex-1 flex flex-row max-md:flex-col items-center my-10 md:gap-5 gap-2 px-2",
+      )}
       initial={{ opacity: 0 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1 }}
