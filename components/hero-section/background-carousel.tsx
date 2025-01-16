@@ -54,21 +54,21 @@ const BackgroundCarousel = () => {
             index === currentIndex && (
               <motion.div
                 key={index}
-                className="absolute inset-0"
-                initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
+                className="absolute inset-0"
                 exit={{ opacity: 0 }}
+                initial={{ opacity: 0 }}
                 transition={{ duration: 1 }}
-                onAnimationStart={handleAnimationStart}
                 onAnimationComplete={handleAnimationEnd}
+                onAnimationStart={handleAnimationStart}
               >
                 <motion.img
                   key={`zoom-${index}`}
-                  src={image.src}
                   alt={image.alt}
+                  animate={{ scale: 1 }}
                   className="absolute inset-0 w-full h-full object-cover"
                   initial={{ scale: 1.2 }}
-                  animate={{ scale: 1 }}
+                  src={image.src}
                   transition={{ duration: 6 }}
                 />
               </motion.div>

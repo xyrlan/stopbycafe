@@ -1,6 +1,7 @@
-'use client'
-import { Navbar } from "@/components/navbar";
+"use client";
 import { useEffect, useState } from "react";
+
+import { Navbar } from "@/components/navbar";
 
 export default function Template({ children }: { children: React.ReactNode }) {
   const [prevScrollPos, setPrevScrollPos] = useState<number>(0);
@@ -10,31 +11,34 @@ export default function Template({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.scrollY;
+
       setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
       setPrevScrollPos(currentScrollPos);
 
       // Verifica se a Hero Section (h-screen) está visível
       const heroSection = document.getElementById("hero-section");
+
       if (heroSection) {
         const heroSectionRect = heroSection.getBoundingClientRect();
 
         // Verifica se a Hero Section está visível na tela
         setIsNavOnHero(
-          heroSectionRect.top <= window.innerHeight && heroSectionRect.bottom >= 0
+          heroSectionRect.top <= window.innerHeight &&
+            heroSectionRect.bottom >= 0,
         );
       }
     };
 
-    if (typeof window !== 'undefined') {
-      window.addEventListener('scroll', handleScroll);
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll);
 
-      return () => window.removeEventListener('scroll', handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
     }
   }, [prevScrollPos, visible]);
 
   return (
     <>
-      <Navbar visible={visible} isNavOnHero={isNavOnHero} />
+      <Navbar isNavOnHero={isNavOnHero} visible={visible} />
       {children}
     </>
   );

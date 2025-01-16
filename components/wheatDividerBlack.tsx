@@ -1,6 +1,5 @@
-import React from 'react'
-import { Divider } from "@nextui-org/divider";
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 const WheatDividerBlack = () => {
   return (
@@ -22,7 +21,7 @@ const WheatDividerBlack = () => {
       />
       {/* <Divider className="bg-black/50 w-7 ml-2 h-px opacity-50" orientation="horizontal" /> */}
     </div>
-  )
-}
+  );
+};
 
-export default WheatDividerBlack
+export default WheatDividerBlack;

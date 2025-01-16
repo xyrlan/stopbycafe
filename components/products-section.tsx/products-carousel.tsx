@@ -1,9 +1,9 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
-import WheatDivider from "../wheatDivider";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@nextui-org/button";
+
 import { Title } from "../title";
 import { title } from "../primitives";
 import WheatDividerBlack from "../wheatDividerBlack";
@@ -37,15 +37,16 @@ const ProductsCarousel = () => {
 
   const handleDragEnd = (event: any, info: { offset: { x: number } }) => {
     const threshold = 100; // Sensibilidade do arraste
+
     if (info.offset.x > threshold) {
       // Arrastou para a direita
       setSelectedIndex((prevIndex) =>
-        prevIndex === 0 ? data.length - 1 : prevIndex - 1
+        prevIndex === 0 ? data.length - 1 : prevIndex - 1,
       );
     } else if (info.offset.x < -threshold) {
       // Arrastou para a esquerda
       setSelectedIndex((prevIndex) =>
-        prevIndex === data.length - 1 ? 0 : prevIndex + 1
+        prevIndex === data.length - 1 ? 0 : prevIndex + 1,
       );
     }
   };
@@ -55,31 +56,31 @@ const ProductsCarousel = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedIndex}
-          initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          className="flex md:flex-row flex-col justify-center items-center gap-20 max-md:gap-5"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
+          transition={{ duration: 0.5 }}
           onDragEnd={handleDragEnd}
-          className="flex md:flex-row flex-col justify-center items-center gap-20 max-md:gap-5"
         >
           {/* Image Section */}
           <motion.div
             key={selectedIndex}
-            initial={{ x: -50 }}
             animate={{ x: 0 }}
-            exit={{ x: -50 }}
-            transition={{ duration: 0.5 }}
             className=" flex items-center justify-center"
+            exit={{ x: -50 }}
+            initial={{ x: -50 }}
+            transition={{ duration: 0.5 }}
           >
             <Image
-              className="md:h-[300px] h-[200px] w-auto object-contain select-none"
-              src={data[selectedIndex].src}
               alt={data[selectedIndex].alt}
+              className="md:h-[300px] h-[200px] w-auto object-contain select-none"
               draggable={false}
-              width={400}
               height={400}
+              src={data[selectedIndex].src}
+              width={400}
             />
           </motion.div>
           {/* Text Section */}
@@ -91,9 +92,7 @@ const ProductsCarousel = () => {
                 </Title>
               </div>
               <WheatDividerBlack />
-              <p className="max-w-sm">
-                {data[selectedIndex].description}
-              </p>
+              <p className="max-w-sm">{data[selectedIndex].description}</p>
             </div>
           </div>
         </motion.div>
@@ -103,22 +102,22 @@ const ProductsCarousel = () => {
         {data.map((_, index) => (
           <Button
             key={index}
+            className={`w-4 h-4 rounded-full ${
+              selectedIndex === index
+                ? "bg-primary"
+                : "bg-default hover:bg-default-400"
+            }`}
             onClick={() => setSelectedIndex(index)}
-            className={`w-4 h-4 rounded-full ${selectedIndex === index
-              ? "bg-primary"
-              : "bg-default hover:bg-default-400"
-              }`}
           />
         ))}
       </div>
 
       {/* Navigation Buttons */}
       <div className="flex justify-center mt-10 my-1">
-        <Button size="lg" color="secondary" className="rounded-full py-2 px-4 ">
+        <Button className="rounded-full py-2 px-4 " color="secondary" size="lg">
           View Full Menu
         </Button>
       </div>
-
     </div>
   );
 };

@@ -1,5 +1,13 @@
-'use client'
-import { useAnimationFrame, useMotionValue, useScroll, useSpring, useTransform, useVelocity, motion } from "framer-motion";
+"use client";
+import {
+  useAnimationFrame,
+  useMotionValue,
+  useScroll,
+  useSpring,
+  useTransform,
+  useVelocity,
+  motion,
+} from "framer-motion";
 import { useRef, useState } from "react";
 import { wrap } from "@motionone/utils";
 import Image from "next/image";
@@ -17,10 +25,10 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
   const scrollVelocity = useVelocity(scrollY);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
-    stiffness: 400
+    stiffness: 400,
   });
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 5], {
-    clamp: false
+    clamp: false,
   });
 
   /**
@@ -28,7 +36,7 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
    * have to replace for wrapping that works for you or dynamically
    * calculate
    */
-  const totalWidth = isAligned ? 2320 : 3780;  // Supondo que calculamos isto com base no layout
+  const totalWidth = isAligned ? 2320 : 3780; // Supondo que calculamos isto com base no layout
   const x = useTransform(baseX, (v) => `${wrap(-totalWidth, 0, v)}px`);
 
   // const directionFactor = useRef<number>(1);
@@ -40,6 +48,7 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
   // });
 
   const directionFactor = useRef<number>(1);
+
   useAnimationFrame((t, delta) => {
     let moveBy = directionFactor.current * baseVelocity * (delta / 1000);
 
@@ -66,41 +75,44 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
    */
 
   const images = [
-    '/small/1.jpg',
-    '/small/2.jpg',
-    '/small/3.jpg',
-    '/small/4.jpg',
-    '/small/5.jpg',
-    '/small/6.jpg',
-    '/small/7.jpg',
+    "/small/1.jpg",
+    "/small/2.jpg",
+    "/small/3.jpg",
+    "/small/4.jpg",
+    "/small/5.jpg",
+    "/small/6.jpg",
+    "/small/7.jpg",
 
-    '/small/1.jpg',
-    '/small/2.jpg',
-    '/small/3.jpg',
-    '/small/4.jpg',
-    '/small/5.jpg',
-    '/small/6.jpg',
-    '/small/7.jpg',
+    "/small/1.jpg",
+    "/small/2.jpg",
+    "/small/3.jpg",
+    "/small/4.jpg",
+    "/small/5.jpg",
+    "/small/6.jpg",
+    "/small/7.jpg",
 
-    '/small/1.jpg',
-    '/small/2.jpg',
-    '/small/3.jpg',
-    '/small/4.jpg',
-    '/small/5.jpg',
-    '/small/6.jpg',
-    '/small/7.jpg',
+    "/small/1.jpg",
+    "/small/2.jpg",
+    "/small/3.jpg",
+    "/small/4.jpg",
+    "/small/5.jpg",
+    "/small/6.jpg",
+    "/small/7.jpg",
   ];
 
   return (
-    <div className="flex flex-col overflow-hidden relative pb-20 md:pb-40 select-none" >
+    <div className="flex flex-col overflow-hidden relative pb-20 md:pb-40 select-none">
       <div className="flex justify-center mb-24">
-        <button onClick={() => setIsAligned(!isAligned)} className={`transition-all duration-300  py-4 ${isAligned ? 'text-secondary' : 'text-secondary'}`}>
+        <button
+          className={`transition-all duration-300  py-4 ${isAligned ? "text-secondary" : "text-secondary"}`}
+          onClick={() => setIsAligned(!isAligned)}
+        >
           {isAligned ? (
             <Columns3 />
           ) : (
             <div className="overflow-visible">
-              <ColumnsIcon size={15} className=" -translate-x-2" />
-              <ColumnsIcon size={15} className="translate-x-1" />
+              <ColumnsIcon className=" -translate-x-2" size={15} />
+              <ColumnsIcon className="translate-x-1" size={15} />
             </div>
           )}
         </button>
@@ -109,15 +121,15 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
         {images.map((src, index) => (
           <Image
             key={index}
-            src={src}
-            alt={`stop by cafe`}
-            width={250}
-            height={500}
-            className={`block border-8 border-secondary border-opacity-20 transition-all duration-300 ${isAligned ? 'mr-8' : 'mr-16 md:mr-20 lg:mr-40 2xl:mr-60'} ${!isAligned && index % 2 === 1 ? 'transform translate-y-20' : ''}  ${!isAligned && index % 2 != 1 ? 'transform -translate-y-20' : ''}`}
             priority
+            alt={`stop by cafe`}
+            className={`block border-8 border-secondary border-opacity-20 transition-all duration-300 ${isAligned ? "mr-8" : "mr-16 md:mr-20 lg:mr-40 2xl:mr-60"} ${!isAligned && index % 2 === 1 ? "transform translate-y-20" : ""}  ${!isAligned && index % 2 != 1 ? "transform -translate-y-20" : ""}`}
+            height={500}
+            src={src}
+            width={250}
           />
         ))}
       </motion.div>
     </div>
-  )
+  );
 }

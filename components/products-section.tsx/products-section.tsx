@@ -1,12 +1,13 @@
-import React from 'react'
-import ProductsCarousel from './products-carousel'
+import React from "react";
+
+import ProductsCarousel from "./products-carousel";
 
 const ProductsSection = () => {
   return (
-    <section id='products' className='lg:mx-auto overflow-hidden py-20'>
+    <section className="lg:mx-auto overflow-hidden py-20" id="products">
       <ProductsCarousel />
     </section>
-  )
-}
+  );
+};
 
-export default ProductsSection
+export default ProductsSection;

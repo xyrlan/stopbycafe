@@ -1,48 +1,48 @@
-import React from 'react'
-import AboutText from './about-text';
-import AboutImage from './about-image';
-import { Title } from '../title';
-import { title } from '../primitives';
-import clsx from 'clsx';
-import AboutTitle from './about-title';
-import Image from 'next/image';
+import React from "react";
+
+import AboutText from "./about-text";
+import AboutTitle from "./about-title";
 
 const AboutSection = () => {
   const aboutPics = [
     {
-      alt: 'Stop by cafe',
-      src: '/small/3.jpg',
+      alt: "Stop by cafe",
+      src: "/small/3.jpg",
     },
     {
-      alt: 'Stop by cafe',
-      src: '/small/5.jpg',
+      alt: "Stop by cafe",
+      src: "/small/5.jpg",
     },
     {
-      alt: 'Stop by cafe',
-      src: '/small/4.jpg',
+      alt: "Stop by cafe",
+      src: "/small/4.jpg",
     },
     {
-      alt: 'Stop by cafe',
-      src: '/small/6.jpg',
+      alt: "Stop by cafe",
+      src: "/small/6.jpg",
     },
-  ]
+  ];
+
   return (
-    <section id='about' className='overflow-hidden py-12 md:py-24 px-6'>
-      <div className='sm:max-w-7xl mx-auto'>
-        <div className='flex items-center'>
+    <section className="overflow-hidden py-12 md:py-24 px-6" id="about">
+      <div className="sm:max-w-7xl mx-auto">
+        <div className="flex items-center">
           <AboutTitle />
-          <div className='px-4 max-w-md text-primary'>
-            <p className='tracking-wider'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo sed nam quos ducimus. Maxime dignissimos adipisci nulla voluptatum.</p>
+          <div className="px-4 max-w-md text-primary">
+            <p className="tracking-wider">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quo sed
+              nam quos ducimus. Maxime dignissimos adipisci nulla voluptatum.
+            </p>
           </div>
         </div>
-        <div className={'my-10'}>
-          <h2 className={'text-6xl font-extrabold text-primary'}>
+        <div className={"my-10"}>
+          <h2 className={"text-6xl font-extrabold text-primary"}>
             Good things come to those
             <br />
-            <span className='text-tertiary'> who bake </span> for others.
+            <span className="text-tertiary"> who bake </span> for others.
           </h2>
         </div>
-        <div className='flex justify-end'>
+        <div className="flex justify-end">
           <AboutText />
         </div>
         {/* <div className='grid grid-flow-col gap-4 '>
@@ -54,7 +54,7 @@ const AboutSection = () => {
         </div> */}
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;
