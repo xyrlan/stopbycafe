@@ -24,10 +24,10 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
       className={clsx(
         "bg-primary border-b-0 py-4",
         "fixed top-0 duration-200 transition-all z-50",
-        // visible && !isOpen || isOpen ? '-translate-y-0' : '-translate-y-40',
         isNavOnHero
           ? "opacity-0 -translate-y-20"
           : "opacity-100 -translate-y-0",
+        (visible && !isOpen) || isOpen ? "-translate-y-0" : "-translate-y-40",
       )}
       isMenuOpen={isOpen}
       maxWidth="xl"
@@ -54,7 +54,7 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
               <NavbarItem>
                 <NextLink
                   className={clsx(
-                    "data-[active=true]:text-primary data-[active=true]:font-medium font-bold text-xs",
+                    "data-[active=true]:text-primary data-[active=true]:font-medium font-bold text-sm ",
                     "text-default",
                     "hover:text-secondary duration-200",
                   )}
@@ -65,7 +65,7 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
                 </NextLink>
               </NavbarItem>
               {index !== siteConfig.navItems.length - 1 && (
-                <span className="text-default-400 select-none opacity-70">
+                <span className="text-default-500 select-none opacity-70">
                   \
                 </span>
               )}

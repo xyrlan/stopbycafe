@@ -6,6 +6,7 @@ import { Providers } from "./providers";
 
 import { siteConfig } from "@/config/site";
 import { fontRoboto } from "@/config/fonts";
+import Footer from "@/components/footer/footer";
 
 export const metadata: Metadata = {
   title: {
@@ -33,8 +34,9 @@ export default function RootLayout({
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "mytheme" }}>
-          <div className="relative flex flex-col ">
-            <main className="">{children}</main>
+          <div className="relative flex flex-col">
+            <main>{children}</main>
+            <Footer />
           </div>
         </Providers>
       </body>

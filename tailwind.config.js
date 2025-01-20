@@ -55,7 +55,7 @@ export default {
             900: "#DF1616", // Tom mais escuro
           },
 
-          tertiary: { 
+          default: { 
             DEFAULT: "#a4b4d8", // Azul suave
             50: "#F1F3F9", // Claro
             100: "#E2E7F3",
@@ -76,6 +76,7 @@ export default {
           },
 
           focus: "#ee4e4e", // Mantendo o vermelho para destaque
+          
         }
       },
     },

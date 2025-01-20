@@ -104,15 +104,15 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
     <div className="flex flex-col overflow-hidden relative pb-20 md:pb-40 select-none">
       <div className="flex justify-center mb-24">
         <button
-          className={`transition-all duration-300  py-4 ${isAligned ? "text-secondary" : "text-secondary"}`}
+          className={`transition-all duration-300 py-4 ${isAligned ? "text-secondary translate-y-10" : "text-secondary"}`}
           onClick={() => setIsAligned(!isAligned)}
         >
           {isAligned ? (
             <Columns3 />
           ) : (
             <div className="overflow-visible">
-              <ColumnsIcon className=" -translate-x-2" size={15} />
-              <ColumnsIcon className="translate-x-1" size={15} />
+              <ColumnsIcon className=" -translate-x-2" size={16} />
+              <ColumnsIcon className="translate-x-1" size={16} />
             </div>
           )}
         </button>

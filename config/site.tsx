@@ -1,3 +1,7 @@
+import { Facebook, Instagram } from "lucide-react";
+
+import { TwitterIcon } from "@/components/icons";
+
 export type SiteConfig = typeof siteConfig;
 
 export const siteConfig = {
@@ -18,6 +22,24 @@ export const siteConfig = {
     },
     {
       label: "Contact",
+      href: "/contact",
+    },
+  ],
+  footerNavItems: [
+    {
+      label: "Home Page",
+      href: "/",
+    },
+    {
+      label: "Know More About Us",
+      href: "/about",
+    },
+    {
+      label: "See Our Menu",
+      href: "/menu",
+    },
+    {
+      label: "Contact Us",
       href: "/contact",
     },
   ],
@@ -55,11 +77,23 @@ export const siteConfig = {
       href: "/logout",
     },
   ],
-  links: {
-    github: "https://github.com/nextui-org/nextui",
-    twitter: "https://twitter.com/getnextui",
-    docs: "https://nextui.org",
-    discord: "https://discord.gg/9b6yyZKmH4",
-    sponsor: "https://patreon.com/jrgarciadev",
-  },
+  links: [
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/stopbycafe/",
+      icon: <Instagram />,
+      newTab: true,
+    },
+    {
+      label: "Twitter",
+      href: "https://twitter.com/getnextui",
+      icon: <TwitterIcon />,
+    },
+    {
+      label: "Facebook",
+      href: "https://www.facebook.com/getnextui",
+      icon: <Facebook />,
+      newTab: true,
+    },
+  ],
 };
