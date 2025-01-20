@@ -12,7 +12,7 @@ const NavFooter = () => {
           <div>
             <Link
               className={clsx(
-                "data-[active=true]:text-primary data-[active=true]:font-medium font-semibold md:text-lg ",
+                "data-[active=true]:text-primary data-[active=true]:font-medium font-semibold md:text-lg",
                 "text-primary",
                 "hover:text-secondary duration-200",
               )}

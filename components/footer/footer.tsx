@@ -11,7 +11,7 @@ import SocialLinks from "./social-links";
 
 const Footer = () => {
   return (
-    <footer className="bg-default py-16 px-4 md:px-12 text-primary ">
+    <footer className="bg-default py-8 md:py-16 px-4 md:px-12 text-primary ">
       <div className="container mx-auto">
         <div className="flex max-md:flex-col max-md:gap-6 justify-between md:mb-20">
           <NavFooter />
@@ -29,7 +29,7 @@ const Footer = () => {
 
         <iframe
           allowFullScreen={true}
-          className="w-full opacity-70"
+          className="w-full opacity-70 max-md:max-h-[200px]"
           height="300"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
@@ -41,10 +41,12 @@ const Footer = () => {
         <div className="my-12">
           <Title className={clsx(title(), "text-secondary-700")}>
             Stop by Café
+            {/* <br /> */}
+            {/* <span className="text-primary-500 text-3xl">Coffe & Pastry</span> */}
           </Title>
         </div>
         <Divider className="my-12" />
-        <div className="font-semibold">
+        <div className="font-semibold max-md:text-sm">
           <p className="">
             © {new Date().getFullYear()} Stop by Café. All rights reserved.
           </p>
