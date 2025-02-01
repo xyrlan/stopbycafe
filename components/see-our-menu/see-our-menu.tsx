@@ -23,7 +23,7 @@ const SeeOurMenu = () => {
         <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/70 z-10" />
         <h2
           className={
-            "text-nowrap text-secondary-50 font-light tracking-widest z-10 text-2xl"
+            "text-nowrap text-secondary-50 font-light tracking-widest z-10 text-xl lg:text-2xl"
           }
         >
           DISCOVER OUR MENU
