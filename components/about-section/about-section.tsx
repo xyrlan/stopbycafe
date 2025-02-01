@@ -4,6 +4,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 
+import { Title } from "../title";
+
 import AboutText from "./about-text";
 import AboutTitle from "./about-title";
 
@@ -68,14 +70,16 @@ const AboutSection = () => {
           <h2 className="text-5xl md:text-7xl font-light text-primary/90 tracking-wide">
             Where Every Bite Tells
             <br />
-            <motion.span
-              animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              className="font-serif italic text-secondary"
-              initial={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.7, delay: 0.6 }}
-            >
-              a Story of Elegance
-            </motion.span>
+            <Title>
+              <motion.span
+                animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                className="  text-default"
+                initial={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.7, delay: 0.6 }}
+              >
+                a Story of Elegance
+              </motion.span>
+            </Title>
           </h2>
         </motion.div>
 

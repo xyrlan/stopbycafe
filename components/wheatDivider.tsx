@@ -1,33 +1,23 @@
 import React from "react";
-import { Divider } from "@nextui-org/divider";
-import Image from "next/image";
 
-const WheatDivider = () => {
+interface WheatDividerProps {
+  className?: string;
+}
+
+const WheatDivider: React.FC<WheatDividerProps> = ({ className = "" }) => {
   return (
-    <div className="flex gap-3 items-center justify-center my-3 select-none">
-      <Divider
-        className="bg-default/50 w-7 mr-2 h-px opacity-50"
-        orientation="horizontal"
-      />
-      <Image
-        alt="Wheat icon"
-        className="-rotate-45 opacity-50"
-        height={30}
-        src="/wheat.svg"
-        width={30}
-      />
-      <Image
-        alt="Wheat icon"
-        className="rotate-45 scale-x-[-1] opacity-50"
-        height={30}
-        src="/wheat.svg"
-        width={30}
-      />
-      <Divider
-        className="bg-default/50 w-7 ml-2 h-px opacity-50"
-        orientation="horizontal"
-      />
-    </div>
+    <svg
+      className={className}
+      fill="currentColor"
+      height="24"
+      viewBox="0 0 100 24"
+      width="100"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M49.5 8.5C45.5 8.5 42 10 39 13C36 16 34.5 19.5 34.5 23.5H36.5C36.5 20 37.8333 17 40.5 14.5C43.1667 12 46.1667 10.75 49.5 10.75C52.8333 10.75 55.8333 12 58.5 14.5C61.1667 17 62.5 20 62.5 23.5H64.5C64.5 19.5 63 16 60 13C57 10 53.5 8.5 49.5 8.5Z" />
+      <path d="M49.5 4.25C44.5 4.25 40.1667 6.08333 36.5 9.75C32.8333 13.4167 31 17.75 31 22.75H33C33 18.25 34.6667 14.4167 38 11.25C41.3333 8.08333 45.1667 6.5 49.5 6.5C53.8333 6.5 57.6667 8.08333 61 11.25C64.3333 14.4167 66 18.25 66 22.75H68C68 17.75 66.1667 13.4167 62.5 9.75C58.8333 6.08333 54.5 4.25 49.5 4.25Z" />
+      <path d="M49.5 0C43.5 0 38.25 2.25 33.75 6.75C29.25 11.25 27 16.5 27 22.5H29C29 17 31.0833 12.25 35.25 8.25C39.4167 4.25 44.1667 2.25 49.5 2.25C54.8333 2.25 59.5833 4.25 63.75 8.25C67.9167 12.25 70 17 70 22.5H72C72 16.5 69.75 11.25 65.25 6.75C60.75 2.25 55.5 0 49.5 0Z" />
+    </svg>
   );
 };
 

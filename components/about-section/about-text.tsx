@@ -1,5 +1,6 @@
 import { Button } from "@nextui-org/button";
 import { ArrowUpRightFromSquareIcon } from "lucide-react";
+import Link from "next/link";
 import React from "react";
 
 const AboutText = () => {
@@ -19,14 +20,16 @@ const AboutText = () => {
           From our signature croissants to our artisanal breads, every bite is a
           celebration of our commitment to culinary excellence.
         </p>
-        <Button
-          className="mt-16 group hover:text-primary border border-primary/20 hover:bg-primary/5 hover:border-primary/40 px-8 py-6 transition-all duration-300"
-          radius="sm"
-          variant="light"
-        >
-          <span>Learn More</span>
-          <ArrowUpRightFromSquareIcon size={16} />
-        </Button>
+        <Link href="/about">
+          <Button
+            className="mt-16 group hover:text-primary border border-primary/20 hover:bg-primary/5 hover:border-primary/40 px-8 py-6 transition-all duration-300"
+            radius="sm"
+            variant="light"
+          >
+            <span>Learn More</span>
+            <ArrowUpRightFromSquareIcon size={16} />
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -115,7 +115,7 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
         />
       </NavbarContent>
 
-      <NavbarMenu className="bg-background/90 backdrop-blur-lg backdrop-saturate-150 pt-20 px-8">
+      <NavbarMenu className="bg-background/90 backdrop-blur-lg backdrop-saturate-150 pt-20 px-8 z-50">
         <motion.div
           animate={{ opacity: 1, x: 0 }}
           className="flex flex-col gap-6"
@@ -141,7 +141,7 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
                   )}
                   href={item.href}
                 >
-                  {item.label}
+                  <button onClick={() => setIsOpen(false)}>{item.label}</button>
                 </Link>
               </NavbarMenuItem>
             </motion.div>

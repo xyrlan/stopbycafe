@@ -26,7 +26,7 @@ export const siteConfig = {
     },
     {
       label: "Gallery",
-      href: "#gallery",
+      href: "/#gallery",
     },
   ],
   footerNavItems: [
