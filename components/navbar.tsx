@@ -11,8 +11,9 @@ import { Link } from "@nextui-org/link";
 import NextLink from "next/link";
 import clsx from "clsx";
 import React, { useState } from "react";
-import Image from "next/image";
 import { motion } from "framer-motion";
+
+import { Title } from "./title";
 
 import { siteConfig } from "@/config/site";
 
@@ -38,14 +39,14 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
       <NavbarContent className="basis-1/5" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
           <NextLink
-            className="flex justify-start items-center gap-1 group"
+            className="flex justify-start items-center gap-1 group "
             href="/"
           >
             <motion.div
               transition={{ type: "spring", stiffness: 300, damping: 10 }}
               whileHover={{ scale: 1.05 }}
             >
-              <Image
+              {/* <Image
                 alt="Logo Stop by Café"
                 className={clsx(
                   "select-none transition-all duration-300",
@@ -55,7 +56,15 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
                 height={100}
                 src="/mockuplogo.png"
                 width={100}
-              />
+              /> */}
+              <Title
+                className={clsx(
+                  // title(),
+                  "text-secondary-600 hover:text-secondary-500 transition-colors text-3xl cursor-pointer",
+                )}
+              >
+                Stop by Café
+              </Title>
             </motion.div>
           </NextLink>
         </NavbarBrand>

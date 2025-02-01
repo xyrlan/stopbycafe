@@ -9,7 +9,7 @@ const AboutText = () => {
         <p className="tracking-wider text-primary/90 font-light leading-relaxed lg:text-lg">
           Nestled in the vibrant heart of Manhattan, just steps away from
           Central Park&apos;s timeless beauty, our bakery brings a fresh take on
-          artisanal delicacies. We blend classic European techniques with
+          artisanal delicacies. We blend classic Brazillian techniques with
           contemporary New York flair to create something truly special.
         </p>
         <br />

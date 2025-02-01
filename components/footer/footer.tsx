@@ -32,7 +32,7 @@ const Footer = () => {
               <Title
                 className={clsx(
                   title(),
-                  "text-secondary-700 mb-8 hover:text-secondary-600 transition-colors cursor-default",
+                  "text-secondary-600 mb-8 hover:text-secondary-500 transition-colors cursor-default",
                 )}
               >
                 Stop by Café

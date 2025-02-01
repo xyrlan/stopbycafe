@@ -24,6 +24,10 @@ export const siteConfig = {
       label: "Contact",
       href: "/contact",
     },
+    {
+      label: "Gallery",
+      href: "#gallery",
+    },
   ],
   footerNavItems: [
     {
@@ -35,12 +39,16 @@ export const siteConfig = {
       href: "/about",
     },
     {
-      label: "See Our Menu",
+      label: "View Our Menu",
       href: "/menu",
     },
     {
       label: "Contact Us",
       href: "/contact",
+    },
+    {
+      label: "View Gallery",
+      href: "#gallery",
     },
   ],
   navMenuItems: [

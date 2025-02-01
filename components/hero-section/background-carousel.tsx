@@ -45,7 +45,7 @@ const BackgroundCarousel = () => {
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none">
       {/* Dark gradient overlay for better text contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 z-10" />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/60 to-primary/70 z-10" />
       {/* Colored overlay for brand identity */}
       <div className="absolute inset-0 bg-primary/40 mix-blend-multiply z-10" />
 
