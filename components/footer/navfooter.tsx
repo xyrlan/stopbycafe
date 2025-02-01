@@ -1,33 +1,48 @@
+"use client";
 import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { siteConfig } from "@/config/site";
 
 const NavFooter = () => {
   return (
-    <ul className="flex flex-wrap gap-4 md:gap-20 justify-between md:ml-2">
+    <motion.ul
+      className="grid grid-cols-2 gap-4"
+      initial={{ opacity: 0 }}
+      transition={{ staggerChildren: 0.1 }}
+      viewport={{ once: true }}
+      whileInView={{ opacity: 1 }}
+    >
       {siteConfig.footerNavItems.map((item, index) => (
-        <React.Fragment key={item.href}>
-          <div>
-            <Link
-              className={clsx(
-                "data-[active=true]:text-primary data-[active=true]:font-medium font-semibold md:text-lg",
-                "text-primary",
-                "hover:text-secondary duration-200",
-              )}
-              color="foreground"
-              href={item.href}
-            >
-              {item.label}
-            </Link>
-          </div>
-          {index !== siteConfig.navItems.length - 1 && (
-            <span className="text-default-500 select-none opacity-70">\</span>
-          )}
-        </React.Fragment>
+        <motion.li
+          key={item.href}
+          initial={{ opacity: 0, x: -20 }}
+          transition={{
+            duration: 0.3,
+            delay: index * 0.1,
+            ease: "easeOut",
+          }}
+          viewport={{ once: true }}
+          whileInView={{ opacity: 1, x: 0 }}
+        >
+          <Link
+            className={clsx(
+              "relative text-primary/70 font-medium text-sm md:text-base",
+              "hover:text-primary transition-colors duration-300",
+              "after:content-[''] after:absolute after:w-0 after:h-[1px]",
+              "after:bg-secondary after:left-0 after:-bottom-1",
+              "after:transition-all after:duration-300",
+              "hover:after:w-full",
+            )}
+            href={item.href}
+          >
+            {item.label}
+          </Link>
+        </motion.li>
       ))}
-    </ul>
+    </motion.ul>
   );
 };
 

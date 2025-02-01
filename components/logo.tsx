@@ -11,10 +11,13 @@ const Logo = ({
 }) => {
   return (
     <Image
+      priority
       alt="Logo Stop by Café"
-      className={clsx("select-none", "md:h-56 max-md:h-40 w-auto")}
+      className={clsx("select-none", "md:h-56 max-md:h-40")}
       height={height}
+      sizes="(max-width: 768px) 160px, 224px"
       src="/mockuplogo.png"
+      style={{ width: "auto", height: "auto" }}
       width={width}
     />
   );

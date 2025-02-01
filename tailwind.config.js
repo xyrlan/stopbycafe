@@ -28,51 +28,51 @@ export default {
         colors: {
           
           primary: {
-            DEFAULT: "#533833", // Tom principal marrom escuro
-            50: "#98665D",  // Tom muito claro
-            100: "#8B5D55",
-            200: "#7E554E",
-            300: "#724C46",
-            400: "#65443E",
-            500: "#533833",  // Tom base
-            600: "#4C332F",
-            700: "#3F2A27",
-            800: "#33221F",
-            900: "#261917",  // Mais escuro
+            DEFAULT: "#4A2F2A", // Tom principal marrom escuro ajustado
+            50: "#8C5B54",  // Tom muito claro ajustado
+            100: "#7F5149",
+            200: "#724740",
+            300: "#653D37",
+            400: "#58362E",
+            500: "#4A2F2A",  // Tom base mais escuro
+            600: "#3D2522",
+            700: "#301C1A",
+            800: "#231412",
+            900: "#160C0A",  // Mais escuro
           },
 
           secondary: {
-            DEFAULT: "#ee4e4e", // Tom vermelho romântico
-            50: "#F8B5B5", // Tom claro
-            100: "#F6A2A2",
-            200: "#f49090",
-            300: "#f27d7d",
-            400: "#f06a6a",
-            500: "#ee4e4e", // Tom base
-            600: "#ED4545",
-            700: "#EB3333",
-            800: "#E92020",
-            900: "#DF1616", // Tom mais escuro
+            DEFAULT: "#E83939", // Tom vermelho mais intenso
+            50: "#FCD5D5", // Tom claro ajustado
+            100: "#FAB8B8",
+            200: "#F69B9B",
+            300: "#F27E7E",
+            400: "#EE5B5B",
+            500: "#E83939", // Tom base mais intenso
+            600: "#D42727",
+            700: "#B31F1F",
+            800: "#921919",
+            900: "#711313", // Tom mais escuro
           },
 
           default: { 
-            DEFAULT: "#a4b4d8", // Azul suave
-            50: "#F1F3F9", // Claro
-            100: "#E2E7F3",
-            200: "#D4DCED",
-            300: "#C6D0E7",
-            400: "#B8C4E0",
-            500: "#a4b4d8", // Base
-            600: "#9BACD4",
-            700: "#8DA0CE",
-            800: "#7E95C8",
-            900: "#7089C2", // Escuro
+            DEFAULT: "#95A7CF", // Azul suave ajustado
+            50: "#FFFFFF",
+            100: "#F5F7FB",
+            200: "#E1E7F3",
+            300: "#CDD7EB",
+            400: "#B9C7E3",
+            500: "#95A7CF", // Base ajustada
+            600: "#7B91C3",
+            700: "#617BB7",
+            800: "#4B669F",
+            900: "#3B5080", // Escuro ajustado
           },
 
           background: {
-            DEFAULT: "#EADBD4", // Rosa claro como fundo
-            foreground: "#533833", // Texto marrom escuro
-            rosa: "#FCDADA",
+            DEFAULT: "#F2E5E0", // Rosa claro ajustado
+            foreground: "#4A2F2A", // Texto marrom escuro ajustado
+            rosa: "#FFE8E8", // Rosa mais suave
           },
 
           focus: "#ee4e4e", // Mantendo o vermelho para destaque

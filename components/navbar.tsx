@@ -5,7 +5,6 @@ import {
   NavbarMenu,
   NavbarMenuToggle,
   NavbarBrand,
-  NavbarItem,
   NavbarMenuItem,
 } from "@nextui-org/navbar";
 import { Link } from "@nextui-org/link";
@@ -13,6 +12,7 @@ import NextLink from "next/link";
 import clsx from "clsx";
 import React, { useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import { siteConfig } from "@/config/site";
 
@@ -22,8 +22,11 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
   return (
     <NextUINavbar
       className={clsx(
-        "bg-primary border-b-0 py-4",
-        "fixed top-0 duration-200 transition-all z-50",
+        "fixed top-0 z-50 w-full",
+        "bg-background/70 backdrop-blur-lg backdrop-saturate-150",
+        "border-b border-secondary/5",
+        "shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]",
+        "transition-all duration-300",
         isNavOnHero
           ? "opacity-0 -translate-y-20"
           : "opacity-100 -translate-y-0",
@@ -32,87 +35,109 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
       isMenuOpen={isOpen}
       maxWidth="xl"
     >
-      <NavbarContent className="basis-1/5 " justify="start">
+      <NavbarContent className="basis-1/5" justify="start">
         <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <Image
-              alt="Logo Stop by Café"
-              className={clsx("select-none", "md:h-24 h-20 w-auto")}
-              height={100}
-              src="/mockuplogo.png"
-              width={100}
-            />
-            <p className="font-bold text-inherit sr-only">Stop By Café</p>
+          <NextLink
+            className="flex justify-start items-center gap-1 group"
+            href="/"
+          >
+            <motion.div
+              transition={{ type: "spring", stiffness: 300, damping: 10 }}
+              whileHover={{ scale: 1.05 }}
+            >
+              <Image
+                alt="Logo Stop by Café"
+                className={clsx(
+                  "select-none transition-all duration-300",
+                  "md:h-20 h-16 w-auto",
+                  "group-hover:brightness-110",
+                )}
+                height={100}
+                src="/mockuplogo.png"
+                width={100}
+              />
+            </motion.div>
           </NextLink>
         </NavbarBrand>
       </NavbarContent>
 
-      <NavbarContent className="hidden sm:flex basis-1/5 " justify="center">
-        <ul className="hidden lg:flex gap-4 justify-start ml-2 uppercase">
+      <NavbarContent className="hidden sm:flex basis-1/5" justify="center">
+        <motion.ul
+          animate={{ opacity: 1, y: 0 }}
+          className="hidden lg:flex gap-8 justify-start ml-2 uppercase"
+          initial={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.5 }}
+        >
           {siteConfig.navItems.map((item, index) => (
-            <React.Fragment key={item.href}>
-              <NavbarItem>
-                <NextLink
-                  className={clsx(
-                    "data-[active=true]:text-primary data-[active=true]:font-medium font-bold text-sm ",
-                    "text-default",
-                    "hover:text-secondary duration-200",
-                  )}
-                  color="foreground"
-                  href={item.href}
-                >
-                  {item.label}
-                </NextLink>
-              </NavbarItem>
-              {index !== siteConfig.navItems.length - 1 && (
-                <span className="text-default-500 select-none opacity-70">
-                  \
-                </span>
-              )}
-            </React.Fragment>
+            <motion.li
+              key={item.href}
+              animate={{ opacity: 1, y: 0 }}
+              className="relative text-nowrap"
+              initial={{ opacity: 0, y: -10 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <NextLink
+                className={clsx(
+                  "font-medium text-sm tracking-[0.15em]",
+                  "text-primary/70 hover:text-primary",
+                  "transition-all duration-300",
+                  "after:content-[''] after:absolute after:w-0 after:h-[1px]",
+                  "after:bg-secondary/80 after:left-0 after:-bottom-1",
+                  "after:transition-all after:duration-300",
+                  "hover:after:w-full hover:after:bg-secondary",
+                  "before:content-[''] before:absolute before:w-[4px] before:h-[4px]",
+                  "before:bg-secondary/40 before:-left-4 before:top-1/2 before:-translate-y-1/2",
+                  "before:rounded-full before:opacity-0",
+                  "hover:before:opacity-100 before:transition-opacity before:duration-300",
+                )}
+                href={item.href}
+              >
+                {item.label}
+              </NextLink>
+            </motion.li>
           ))}
-        </ul>
-        {/* <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem> */}
+        </motion.ul>
       </NavbarContent>
 
-      {/* <NavbarContent className="hidden sm:flex basis-1/5" justify="end">
-        <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-      </NavbarContent> */}
-
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        {/* <Link isExternal aria-label="Instagram" href={siteConfig.links.github}>
-          <Image
-              alt="Instagram Icon"
-              className={clsx("select-none", "h-6 w-auto")}
-              height={100}
-              width={100}
-              src="/insta.png"
-            />
-        </Link> */}
-        {/* <ThemeSwitch />  */}
         <NavbarMenuToggle
-          className="text-default"
+          className="text-primary/80 hover:text-primary transition-colors"
           onClick={() => setIsOpen(!isOpen)}
         />
       </NavbarContent>
 
-      <NavbarMenu className="bg-primary">
-        {/* <div className="mt-4 ">
-          {searchInput}
-        </div> */}
-        <div className="mx-4 mt-20 flex flex-col gap-3">
+      <NavbarMenu className="bg-background/90 backdrop-blur-lg backdrop-saturate-150 pt-20 px-8">
+        <motion.div
+          animate={{ opacity: 1, x: 0 }}
+          className="flex flex-col gap-6"
+          initial={{ opacity: 0, x: -20 }}
+          transition={{ duration: 0.3 }}
+        >
           {siteConfig.navItems.map((item, index) => (
-            <NavbarMenuItem key={`${item}-${index}`}>
-              <Link
-                className="text-default font-semibold text-3xl"
-                href="#"
-                size="lg"
-              >
-                {item.label}
-              </Link>
-            </NavbarMenuItem>
+            <motion.div
+              key={`${item}-${index}`}
+              animate={{ opacity: 1, x: 0 }}
+              className="text-nowrap"
+              initial={{ opacity: 0, x: -20 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <NavbarMenuItem>
+                <Link
+                  className={clsx(
+                    "font-serif text-2xl text-primary/70",
+                    "hover:text-primary transition-all",
+                    "border-b border-secondary/5 pb-2",
+                    "hover:tracking-wider",
+                    "inline-block w-full",
+                  )}
+                  href={item.href}
+                >
+                  {item.label}
+                </Link>
+              </NavbarMenuItem>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </NavbarMenu>
     </NextUINavbar>
   );

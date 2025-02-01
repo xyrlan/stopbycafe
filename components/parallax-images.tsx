@@ -101,7 +101,7 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
   ];
 
   return (
-    <div className="flex flex-col overflow-hidden relative pb-20 md:pb-40 select-none">
+    <div className="flex flex-col overflow-hidden relative py-20 md:py-40 select-none">
       <div className="flex justify-center mb-24">
         <button
           className={`transition-all duration-300 py-4 ${isAligned ? "text-secondary translate-y-10" : "text-secondary"}`}

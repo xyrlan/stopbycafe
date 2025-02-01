@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <PresentationSection />
       <AboutSection />
+      <PresentationSection />
       <ParallaxImages baseVelocity={150} />
       {/* <ProductsSection /> */}
     </>

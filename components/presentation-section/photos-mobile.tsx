@@ -59,31 +59,54 @@ const allData = [...data, ...data2];
 
 // Variants para as animações de entrada/saída
 const variants = {
-  enter: (direction: number) => {
-    return {
-      x: direction > 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.8,
-    };
-  },
+  enter: (direction: number) => ({
+    x: direction > 0 ? 300 : -300,
+    opacity: 0,
+    scale: 0.9,
+    rotateY: direction > 0 ? 45 : -45,
+  }),
   center: {
     x: 0,
     opacity: 1,
     scale: 1,
+    rotateY: 0,
     transition: {
-      duration: 0.5,
+      duration: 0.6,
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
     },
   },
-  exit: (direction: number) => {
-    return {
-      x: direction < 0 ? 300 : -300,
-      opacity: 0,
-      scale: 0.8,
-      transition: {
-        duration: 0.4,
-      },
-      position: "absolute",
-    };
+  exit: (direction: number) => ({
+    x: direction < 0 ? 300 : -300,
+    opacity: 0,
+    scale: 0.9,
+    rotateY: direction < 0 ? 45 : -45,
+    transition: {
+      duration: 0.5,
+      type: "spring",
+      stiffness: 300,
+      damping: 30,
+    },
+    position: "absolute",
+  }),
+};
+
+const buttonVariants = {
+  rest: { scale: 1, opacity: 0.7 },
+  hover: {
+    scale: 1.1,
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      ease: "easeInOut",
+    },
+  },
+  tap: {
+    scale: 0.95,
+    transition: {
+      duration: 0.1,
+    },
   },
 };
 
@@ -95,26 +118,52 @@ const CarouselSlide = ({ item }: { item: (typeof allData)[0] }) => {
 
   return (
     <div className="relative w-full h-full flex flex-col items-center justify-center p-4 md:hidden">
-      <div className="relative w-full h-60 overflow-hidden flex justify-center items-center group">
-        <Image
-          alt={title}
-          className="object-cover absolute w-full h-full shadow-lg z-10 group-hover:opacity-0 duration-300"
-          height={240}
-          src={image}
-          width={352}
-        />
-        <Image
-          alt={title}
-          className="object-cover w-full h-full"
-          height={240}
-          src={image2}
-          width={352}
-        />
-      </div>
-      <Title className="text-primary font-semibold text-2xl mt-4">
-        {title}
-      </Title>
-      <WheatDividerBlack />
+      <motion.div
+        className="relative w-full h-60 overflow-hidden flex justify-center items-center group"
+        transition={{ duration: 0.3 }}
+        whileHover={{ scale: 1.02 }}
+      >
+        <motion.div
+          className="w-full h-full relative"
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <Image
+            alt={title}
+            className="object-cover absolute shadow-lg z-10 group-hover:opacity-0 duration-500"
+            height={240}
+            sizes="(max-width: 768px) 100vw, 352px"
+            src={image}
+            style={{ width: "100%", height: "100%" }}
+            width={352}
+          />
+          <Image
+            alt={title}
+            className="object-cover transition-all duration-[3000ms]"
+            height={240}
+            sizes="(max-width: 768px) 100vw, 352px"
+            src={image2}
+            style={{ width: "100%", height: "100%" }}
+            width={352}
+          />
+        </motion.div>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+      >
+        <Title className="text-primary font-semibold text-2xl mt-4">
+          {title}
+        </Title>
+      </motion.div>
+      <motion.div
+        animate={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        <WheatDividerBlack />
+      </motion.div>
     </div>
   );
 };
@@ -183,20 +232,38 @@ const PhotosNDescriptionsMobile = () => {
       </div>
 
       {/* Botão anterior */}
-      <button
-        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 rounded-full p-2 z-20"
+      <motion.button
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/50 backdrop-blur-sm rounded-full p-2 z-20 shadow-lg"
+        initial="rest"
+        variants={buttonVariants}
+        whileHover="hover"
+        whileTap="tap"
         onClick={() => paginate(-1)}
       >
-        <ChevronLeft />
-      </button>
+        <motion.div
+          animate={{ x: [-2, 0, -2] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <ChevronLeft className="w-6 h-6 text-primary" />
+        </motion.div>
+      </motion.button>
 
       {/* Botão próximo */}
-      <button
-        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 rounded-full p-2 z-20"
+      <motion.button
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/50 backdrop-blur-sm rounded-full p-2 z-20 shadow-lg"
+        initial="rest"
+        variants={buttonVariants}
+        whileHover="hover"
+        whileTap="tap"
         onClick={() => paginate(1)}
       >
-        <ChevronRight />
-      </button>
+        <motion.div
+          animate={{ x: [2, 0, 2] }}
+          transition={{ duration: 1.5, repeat: Infinity }}
+        >
+          <ChevronRight className="w-6 h-6 text-primary" />
+        </motion.div>
+      </motion.button>
     </div>
   );
 };

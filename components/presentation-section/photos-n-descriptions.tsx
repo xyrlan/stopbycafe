@@ -68,85 +68,175 @@ const data2 = [
   },
 ];
 
-const Item = ({ title, description, image, image2, isReverse, index }: any) => (
-  <div
-    className={clsx(
-      "flex flex-col lg:flex-row max-lg:gap-5 max-lg:items-center overflow-hidden",
-      isReverse && "lg:flex-row-reverse",
-    )}
-  >
-    <div
-      className={clsx(
-        "flex-1 relative group overflow-hidden flex justify-center select-none h-[250px]",
-      )}
-    >
-      <Image
-        alt={title}
-        className="object-cover shadow-lg absolute group-hover:opacity-0 duration-300 transition-all h-full z-10"
-        height={600}
-        src={image}
-        width={600}
-      />
-      <Image
-        alt={title}
-        className={clsx(
-          "object-cover h-full group-hover:scale-110 transition-all duration-[4000ms]",
-        )}
-        height={600}
-        src={image2}
-        width={600}
-      />
-    </div>
+const Item = ({ title, description, image, image2, isReverse, index }: any) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.2,
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { scale: 0.95, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        delay: index * 0.2,
+      },
+    },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: isReverse ? -30 : 30 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.6,
+        delay: index * 0.2 + 0.3,
+      },
+    },
+  };
+
+  return (
     <motion.div
-      className="flex-1 flex flex-col justify-center text-center gap-2"
+      className={clsx(
+        "flex flex-col lg:flex-row max-lg:gap-5 max-lg:items-center overflow-hidden",
+        isReverse && "lg:flex-row-reverse",
+      )}
+      initial="hidden"
+      variants={containerVariants}
+      viewport={{ once: true, margin: "-50px" }}
+      whileInView="visible"
+    >
+      <motion.div
+        className={clsx(
+          "flex-1 relative group overflow-hidden flex justify-center select-none h-[250px]",
+        )}
+        transition={{ duration: 0.3 }}
+        variants={imageVariants}
+        whileHover={{ scale: 1.02 }}
+      >
+        <motion.div
+          className="w-full h-full relative"
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.1 }}
+        >
+          <Image
+            alt={title}
+            className="object-cover shadow-lg absolute group-hover:opacity-0 duration-500 transition-all z-10"
+            height={600}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            src={image}
+            style={{ width: "100%", height: "100%" }}
+            width={600}
+          />
+          <Image
+            alt={title}
+            className="object-cover transition-all duration-[3000ms]"
+            height={600}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            src={image2}
+            style={{ width: "100%", height: "100%" }}
+            width={600}
+          />
+        </motion.div>
+      </motion.div>
+      <motion.div
+        className="flex-1 flex flex-col justify-center text-center gap-2"
+        variants={textVariants}
+      >
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.5, delay: index * 0.2 + 0.4 }}
+          whileInView={{ opacity: 1, y: 0 }}
+        >
+          <Title className="text-primary font-semibold text-3xl px-3">
+            {title}
+          </Title>
+        </motion.div>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.5, delay: index * 0.2 + 0.5 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+        >
+          <WheatDividerBlack />
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  );
+};
+
+const PhotosNDescriptions = () => {
+  return (
+    <motion.div
+      className="max-md:hidden"
       initial={{ opacity: 0 }}
-      transition={{ duration: 1, delay: index * 0.1 }}
+      transition={{ duration: 0.8 }}
       viewport={{ once: true }}
       whileInView={{ opacity: 1 }}
     >
-      <Title className={"text-primary font-semibold text-3xl px-3"}>
-        {title}
-      </Title>
-      <WheatDividerBlack />
+      <motion.div
+        className="grid lg:grid-cols-2 max-lg:gap-5"
+        initial={{ opacity: 0, y: 30 }}
+        transition={{ duration: 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        {data.map((item, index) => (
+          <React.Fragment key={index}>
+            <motion.div
+              className="flex flex-col items-center"
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileInView={{ opacity: 1 }}
+            >
+              <Item
+                description={item.description}
+                image={item.image}
+                image2={item.image2}
+                index={index}
+                isReverse={index > 1}
+                title={item.title}
+              />
+            </motion.div>
+          </React.Fragment>
+        ))}
+      </motion.div>
+      <motion.div
+        className="grid lg:grid-cols-2 max-lg:gap-5"
+        initial={{ opacity: 0, y: 30 }}
+        transition={{ duration: 0.6, delay: 0.3 }}
+        whileInView={{ opacity: 1, y: 0 }}
+      >
+        {data2.map((item, index) => (
+          <React.Fragment key={index}>
+            <motion.div
+              className="flex flex-col items-center"
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              whileInView={{ opacity: 1 }}
+            >
+              <Item
+                description={item.description}
+                image={item.image}
+                image2={item.image2}
+                index={index + 2}
+                isReverse={index > 1}
+                title={item.title}
+              />
+            </motion.div>
+          </React.Fragment>
+        ))}
+      </motion.div>
     </motion.div>
-  </div>
-);
-
-const PhotosNDescriptions = () => (
-  <div className="max-md:hidden">
-    <div className="grid lg:grid-cols-2 max-lg:gap-5">
-      {data.map((item, index) => (
-        <React.Fragment key={index}>
-          <div className="flex flex-col items-center">
-            <Item
-              description={item.description}
-              image={item.image}
-              image2={item.image2}
-              index={index}
-              isReverse={index > 1} // reverse layout for items after the second
-              title={item.title}
-            />
-          </div>
-        </React.Fragment>
-      ))}
-    </div>
-    <div className="grid lg:grid-cols-2 max-lg:gap-5">
-      {data2.map((item, index) => (
-        <React.Fragment key={index}>
-          <div className="flex flex-col items-center">
-            <Item
-              description={item.description}
-              image={item.image}
-              image2={item.image2}
-              index={index + 2}
-              isReverse={index > 1} // reverse layout for items after the second
-              title={item.title}
-            />
-          </div>
-        </React.Fragment>
-      ))}
-    </div>
-  </div>
-);
+  );
+};
 
 export default PhotosNDescriptions;

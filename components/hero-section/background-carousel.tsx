@@ -44,8 +44,10 @@ const BackgroundCarousel = () => {
 
   return (
     <div className="absolute inset-0 w-full h-full overflow-hidden select-none">
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-primary bg-opacity-60 z-10" />
+      {/* Dark gradient overlay for better text contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/60 to-black/70 z-10" />
+      {/* Colored overlay for brand identity */}
+      <div className="absolute inset-0 bg-primary/40 mix-blend-multiply z-10" />
 
       {/* Image Carousel */}
       <AnimatePresence mode="popLayout">

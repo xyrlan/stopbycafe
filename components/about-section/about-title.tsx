@@ -10,17 +10,19 @@ const AboutTitle = () => {
     <motion.div
       className={clsx(
         title(),
-        "flex-1 flex flex-row max-md:flex-col md:items-center my-10 md:gap-5 gap-2 px-2",
+        "flex-1 flex flex-row max-md:flex-col md:items-center my-10 md:gap-8 gap-4 px-2",
       )}
       initial={{ opacity: 0 }}
       transition={{ duration: 1 }}
       whileInView={{ opacity: 1 }}
     >
-      <h2 className={"text-nowrap text-secondary"}>About Us</h2>
+      <h2 className={"text-nowrap text-secondary font-light tracking-widest"}>
+        OUR STORY
+      </h2>
       <motion.div
-        className="h-0.5 bg-secondary bg-opacity-20"
+        className="h-[1px] bg-[#9E8A78] bg-opacity-30"
         initial={{ width: 0 }}
-        transition={{ duration: 2 }}
+        transition={{ duration: 1.5, ease: "easeInOut" }}
         whileInView={{ width: "100%" }}
       />
     </motion.div>
