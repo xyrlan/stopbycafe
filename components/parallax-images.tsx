@@ -170,7 +170,7 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
 
   return (
     <div
-      className="flex flex-col overflow-hidden relative py-20  select-none"
+      className="flex flex-col overflow-hidden relative py-20 select-none"
       id="gallery"
     >
       <div className="absolute top-20 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4">

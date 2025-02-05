@@ -38,7 +38,7 @@ const HeroSection = () => {
   return (
     <motion.section
       animate="visible"
-      className="relative w-full h-screen overflow-hidden flex flex-col justify-between items-center px-2"
+      className="relative w-full h-screen overflow-hidden flex flex-col justify-between items-center px-2 pt-2"
       id="hero-section"
       initial="hidden"
       variants={containerVariants}
@@ -82,7 +82,7 @@ const HeroSection = () => {
         animate={{
           y: [0, 10, 0],
         }}
-        className="z-20 mb-8"
+        className="z-20 "
         transition={{
           duration: 2,
           repeat: Infinity,

@@ -8,26 +8,27 @@ import { Title } from "../title";
 import WheatDivider from "../wheatDivider";
 
 // Mesmos dados do exemplo original
-const data = [
+
+const data2 = [
   {
-    title: "Treat yourself",
-    image: "/docinhos/1.jpg",
-    image2: "/docinhos/2.jpg",
+    title: "Where passion meets perfection",
+    image: "/docinhos/9.jpg",
+    image2: "/docinhos/10.jpg",
   },
   {
-    title: "Baked with passion",
-    image: "/docinhos/3.jpg",
-    image2: "/docinhos/4.jpg",
+    title: "Sweetness in every bite",
+    image: "/docinhos/11.jpg",
+    image2: "/docinhos/12.jpg",
   },
   {
-    title: "Handmade with love",
-    image: "/docinhos/5.jpg",
-    image2: "/docinhos/6.jpg",
+    title: "Flavors that tell a story",
+    image: "/docinhos/13.jpg",
+    image2: "/docinhos/14.jpg",
   },
   {
-    title: "Whisked with warmth",
-    image: "/docinhos/7.jpg",
-    image2: "/docinhos/8.jpg",
+    title: "A sprinkle of joy in every creation",
+    image: "/docinhos/15.jpg",
+    image2: "/docinhos/16.jpg",
   },
 ];
 
@@ -89,7 +90,7 @@ const buttonVariants = {
 const swipeConfidenceThreshold = 80; // Ajuste conforme a sensibilidade desejada
 
 // Renderiza o slide atual
-const CarouselSlide = ({ item }: { item: (typeof data)[0] }) => {
+const CarouselSlide = ({ item }: { item: (typeof data2)[0] }) => {
   const { title, image, image2 } = item;
 
   return (
@@ -129,7 +130,7 @@ const CarouselSlide = ({ item }: { item: (typeof data)[0] }) => {
         initial={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
       >
-        <Title className="text-primary text-3xl my-4">{title}</Title>
+        <Title className="text-primary text-4xl my-4">{title}</Title>
       </motion.div>
       <motion.div
         animate={{ opacity: 1, scale: 1 }}
@@ -144,7 +145,7 @@ const CarouselSlide = ({ item }: { item: (typeof data)[0] }) => {
 };
 
 // Componente que controla o carrossel
-const PhotosNDescriptionsMobile = () => {
+const PhotosNDescriptionsMobile2 = () => {
   // Estado para o índice atual e direção do swipe
   const [[currentIndex, direction], setCurrentIndex] = useState<
     [number, number]
@@ -157,8 +158,8 @@ const PhotosNDescriptionsMobile = () => {
 
       // loop infinito (volta ao inicio ou fim caso passe dos limites)
       if (nextIndex < 0) {
-        nextIndex = data.length - 1;
-      } else if (nextIndex >= data.length) {
+        nextIndex = data2.length - 1;
+      } else if (nextIndex >= data2.length) {
         nextIndex = 0;
       }
 
@@ -182,8 +183,8 @@ const PhotosNDescriptionsMobile = () => {
   };
 
   // Garante que o index seja válido caso use "wrapping"
-  const itemIndex = currentIndex % data.length;
-  const item = data[itemIndex];
+  const itemIndex = currentIndex % data2.length;
+  const item = data2[itemIndex];
 
   return (
     <div className="relative w-full h-auto flex items-center justify-center overflow-hidden">
@@ -243,4 +244,4 @@ const PhotosNDescriptionsMobile = () => {
   );
 };
 
-export default PhotosNDescriptionsMobile;
+export default PhotosNDescriptionsMobile2;

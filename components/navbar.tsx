@@ -46,21 +46,9 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
               transition={{ type: "spring", stiffness: 300, damping: 10 }}
               whileHover={{ scale: 1.05 }}
             >
-              {/* <Image
-                alt="Logo Stop by Café"
-                className={clsx(
-                  "select-none transition-all duration-300",
-                  "md:h-20 h-16 w-auto",
-                  "group-hover:brightness-110",
-                )}
-                height={100}
-                src="/mockuplogo.png"
-                width={100}
-              /> */}
               <Title
                 className={clsx(
-                  // title(),
-                  "text-secondary-600 hover:text-secondary-500 transition-colors text-3xl cursor-pointer",
+                  "text-primary-600 hover:text-primary-500 transition-colors text-3xl cursor-pointer",
                 )}
               >
                 Stop by Café

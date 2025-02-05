@@ -3,7 +3,6 @@ import React from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 
-import { title } from "../primitives";
 import WheatDivider from "../wheatDivider";
 import { Title } from "../title";
 
@@ -11,7 +10,7 @@ const HeroSlogan = () => {
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
-      className={clsx("z-20 flex flex-col items-center text-center", title())}
+      className={clsx("z-20 flex flex-col items-center text-center")}
       initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.8, delay: 0.5 }}
     >
@@ -20,8 +19,9 @@ const HeroSlogan = () => {
         initial={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.6, delay: 0.7 }}
       >
-        <Title className="text-white drop-shadow-lg">
-          Welcome to Stop by Café
+        <Title className="text-white drop-shadow-lg text-5xl mb-2 leading-normal">
+          Welcome to
+          <br /> Stop by Café
         </Title>
       </motion.div>
       {/* <motion.h2
@@ -37,6 +37,7 @@ const HeroSlogan = () => {
       </motion.h2> */}
       <motion.div
         animate={{ opacity: 1, scale: 1 }}
+        className="text-white my-2"
         initial={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.6, delay: 1.1 }}
       >

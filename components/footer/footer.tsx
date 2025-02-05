@@ -4,9 +4,7 @@ import clsx from "clsx";
 import { Divider } from "@nextui-org/divider";
 import Link from "next/link";
 import { motion } from "framer-motion";
-
-import { Title } from "../title";
-import { title } from "../primitives";
+import Image from "next/image";
 
 import NavFooter from "./navfooter";
 import SocialLinks from "./social-links";
@@ -24,22 +22,31 @@ const Footer = () => {
         >
           <div className="space-y-8">
             <motion.div
+              className="gap-2"
               initial={{ opacity: 0, scale: 0.95 }}
               transition={{ duration: 0.5 }}
               viewport={{ once: true }}
               whileInView={{ opacity: 1, scale: 1 }}
             >
-              <Title
+              <Image
+                priority
+                alt="Logo Stop by Café"
+                className={clsx("select-none", "max-w-32 h-auto")}
+                height={150}
+                src="/stop.png"
+                style={{ width: "auto", height: "auto" }}
+                width={150}
+              />
+              {/* <Title
                 className={clsx(
-                  title(),
-                  "text-secondary-600 mb-8 hover:text-secondary-500 transition-colors cursor-default",
+                  "text-secondary-600 mb-8 hover:text-secondary-500 transition-colors cursor-default text-3xl",
                 )}
               >
                 Stop by Café
-              </Title>
+              </Title> */}
             </motion.div>
             <div className="space-y-6 text-primary/80">
-              <motion.p
+              {/* <motion.p
                 className="flex items-center gap-3 group cursor-default"
                 transition={{ type: "spring", stiffness: 300, damping: 10 }}
                 whileHover={{ x: 5 }}
@@ -50,7 +57,7 @@ const Footer = () => {
                 <span className="group-hover:text-primary transition-colors">
                   +xx (xx) 99999-9999
                 </span>
-              </motion.p>
+              </motion.p> */}
               <motion.p
                 className="flex items-center gap-3 group cursor-default"
                 transition={{ type: "spring", stiffness: 300, damping: 10 }}

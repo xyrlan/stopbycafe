@@ -21,10 +21,6 @@ export const siteConfig = {
       href: "/menu",
     },
     {
-      label: "Contact",
-      href: "/contact",
-    },
-    {
       label: "Gallery",
       href: "/#gallery",
     },
@@ -42,10 +38,10 @@ export const siteConfig = {
       label: "View Our Menu",
       href: "/menu",
     },
-    {
-      label: "Contact Us",
-      href: "/contact",
-    },
+    // {
+    //   label: "Contact Us",
+    //   href: "/contact",
+    // },
     {
       label: "View Gallery",
       href: "#gallery",
@@ -94,12 +90,12 @@ export const siteConfig = {
     },
     {
       label: "Twitter",
-      href: "https://twitter.com/getnextui",
+      href: "https://twitter.com/stopbycafe",
       icon: <TwitterIcon />,
     },
     {
       label: "Facebook",
-      href: "https://www.facebook.com/getnextui",
+      href: "https://www.facebook.com/stopbycafe/",
       icon: <Facebook />,
       newTab: true,
     },

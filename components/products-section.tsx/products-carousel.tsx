@@ -3,10 +3,11 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "@nextui-org/button";
+import Link from "next/link";
+import { ArrowUpRightFromSquareIcon } from "lucide-react";
 
 import { Title } from "../title";
-import { title } from "../primitives";
-import WheatDividerBlack from "../wheatDividerBlack";
+import WheatDivider from "../wheatDivider";
 
 const ProductsCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -86,13 +87,15 @@ const ProductsCarousel = () => {
           {/* Text Section */}
           <div className=" flex items-center justify-center">
             <div className="flex flex-col items-center gap-2 justify-center max-w-lg text-center">
-              <div className={title()}>
-                <Title className="text-primary my-2 font-bold">
+              <div>
+                <Title className="text-primary my-2 text-6xl">
                   {data[selectedIndex].title}
                 </Title>
               </div>
-              <WheatDividerBlack />
-              <p className="max-w-sm">{data[selectedIndex].description}</p>
+              <WheatDivider />
+              <p className="tracking-wider text-primary font-light leading-relaxed lg:text-lg my-7 px-2 max-w-full">
+                {data[selectedIndex].description}
+              </p>
             </div>
           </div>
         </motion.div>
@@ -104,8 +107,8 @@ const ProductsCarousel = () => {
             key={index}
             className={`w-4 h-4 rounded-full ${
               selectedIndex === index
-                ? "bg-primary"
-                : "bg-default hover:bg-default-400"
+                ? "bg-secondary"
+                : "bg-primary-200 hover:bg-primary-100"
             }`}
             onClick={() => setSelectedIndex(index)}
           />
@@ -113,10 +116,18 @@ const ProductsCarousel = () => {
       </div>
 
       {/* Navigation Buttons */}
-      <div className="flex justify-center mt-10 my-1">
-        <Button className="rounded-full py-2 px-4 " color="secondary" size="lg">
-          View Full Menu
-        </Button>
+      <div className="flex justify-center">
+        <Link href="/menu">
+          <Button
+            className="mt-16 group hover:text-primary border border-primary/20 hover:bg-secondary/50 hover:border-primary/40 px-8 py-6 transition-all duration-300"
+            color="secondary"
+            radius="sm"
+            variant="solid"
+          >
+            <span>View Full Menu</span>
+            <ArrowUpRightFromSquareIcon size={16} />
+          </Button>
+        </Link>
       </div>
     </div>
   );

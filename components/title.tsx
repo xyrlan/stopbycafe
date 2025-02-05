@@ -1,16 +1,12 @@
 import clsx from "clsx";
 
-import { fontDancingScript } from "@/config/fonts";
+import { fontVibes } from "@/config/fonts";
 
 export function Title({ children, ...props }: any) {
   return (
     <h3
       {...props}
-      className={clsx(
-        "font-dancingScript",
-        fontDancingScript.variable,
-        props.className,
-      )}
+      className={clsx("font-vibes ", fontVibes.variable, props.className)}
     >
       {children}
     </h3>

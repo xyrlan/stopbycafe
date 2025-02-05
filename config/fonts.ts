@@ -4,6 +4,7 @@ import {
   Dancing_Script as FontDancingScript,
   Nunito as FontNunito,
   Roboto as FontRoboto,
+  Great_Vibes as FontVibes,
 } from "next/font/google";
 
 export const fontRoboto = FontRoboto({
@@ -31,4 +32,11 @@ export const fontNunito = FontNunito({
   subsets: ["latin"],
   fallback: ["Inter", "sans-serif", "Nunito Sans"],
   variable: "--font-nunito",
+});
+
+export const fontVibes = FontVibes({
+  subsets: ["latin"],
+  weight: ["400"],
+  fallback: ["Inter", "sans-serif", "Nunito Sans"],
+  variable: "--font-vibes",
 });

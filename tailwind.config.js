@@ -16,6 +16,7 @@ export default {
         nunito: ["var(--font-nunito)"],
         roboto: ["var(--font-roboto)"],
         mindset: ["Mindset"],
+        vibes: ["var(--font-vibes)"],
       },
     },
   },
@@ -26,7 +27,7 @@ export default {
       mytheme: {
         extend: "light",
         colors: {
-          
+
           primary: {
             DEFAULT: "#4A2F2A", // Tom principal marrom escuro ajustado
             50: "#8C5B54",  // Tom muito claro ajustado
@@ -55,7 +56,7 @@ export default {
             900: "#711313", // Tom mais escuro
           },
 
-          default: { 
+          default: {
             DEFAULT: "#95A7CF", // Azul suave ajustado
             50: "#FFFFFF",
             100: "#F5F7FB",
@@ -76,7 +77,7 @@ export default {
           },
 
           focus: "#ee4e4e", // Mantendo o vermelho para destaque
-          
+
         }
       },
     },
