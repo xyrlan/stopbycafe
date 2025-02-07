@@ -157,7 +157,7 @@ const Footer = () => {
             by{" "}
             <Link
               className="text-secondary hover:text-secondary-600 transition-colors underline-offset-4 hover:underline"
-              href="https://xyrlan.vercel.app/"
+              href="https://xyrlan-marketing.vercel.app/"
               target="_blank"
             >
               xyrlan
