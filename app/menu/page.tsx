@@ -231,7 +231,7 @@ export default function MenuPage() {
           </p>
         </div>
         <MenuNav sections={sections} />
-        <div className="pt-12">
+        <div className="pt-12 max-w-5xl mx-auto px-4">
           {Object.values(menuData).map((section) => (
             <MenuSection key={section.title} {...section} />
           ))}
