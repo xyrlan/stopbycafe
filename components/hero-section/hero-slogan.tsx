@@ -19,7 +19,7 @@ const HeroSlogan = () => {
         initial={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.6, delay: 0.7 }}
       >
-        <Title className="text-white drop-shadow-lg text-5xl mb-2 leading-normal">
+        <Title className="text-default brightness-125 drop-shadow-lg text-5xl mb-2 leading-normal">
           Welcome to
           <br /> Stop by Café
         </Title>
@@ -37,7 +37,7 @@ const HeroSlogan = () => {
       </motion.h2> */}
       <motion.div
         animate={{ opacity: 1, scale: 1 }}
-        className="text-white my-2"
+        className="text-default my-2"
         initial={{ opacity: 0, scale: 0.8 }}
         transition={{ duration: 0.6, delay: 1.1 }}
       >

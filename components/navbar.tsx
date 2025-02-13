@@ -24,7 +24,7 @@ export const Navbar = ({ visible, isNavOnHero }: any) => {
     <NextUINavbar
       className={clsx(
         "fixed top-0 z-50 w-full",
-        "bg-background/70 backdrop-blur-lg backdrop-saturate-150",
+        "bg-default/60 backdrop-blur-lg backdrop-saturate-150",
         "border-b border-secondary/5",
         "shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)]",
         "transition-all duration-300",

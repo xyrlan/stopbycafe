@@ -2,7 +2,6 @@
 import { motion } from "framer-motion";
 
 import CountryFlags from "../country-flags";
-import Logo from "../logo";
 
 import BackgroundCarousel from "./background-carousel";
 import HeroNavbar from "./hero-navbar";
@@ -47,25 +46,17 @@ const HeroSection = () => {
         className="z-20 flex flex-col items-center"
         variants={containerVariants}
       >
-        <motion.div
+        {/* <motion.div
           transition={{ duration: 0.3 }}
           variants={itemVariants}
           whileHover={{ scale: 1.02 }}
         >
           <Logo />
-        </motion.div>
-        <motion.div
-          transition={{ duration: 0.3 }}
-          variants={itemVariants}
-          whileHover={{ scale: 1.02 }}
-        >
+        </motion.div> */}
+        <motion.div transition={{ duration: 0.3 }} variants={itemVariants}>
           <HeroNavbar />
         </motion.div>
-        <motion.div
-          transition={{ duration: 0.3 }}
-          variants={itemVariants}
-          whileHover={{ scale: 1.05 }}
-        >
+        <motion.div transition={{ duration: 0.3 }} variants={itemVariants}>
           <CountryFlags />
         </motion.div>
       </motion.div>
@@ -90,7 +81,6 @@ const HeroSection = () => {
           ease: "easeInOut",
         }}
         variants={itemVariants}
-        whileHover={{ scale: 1.1 }}
       >
         <ScrollDown />
       </motion.div>

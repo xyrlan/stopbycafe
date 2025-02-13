@@ -10,7 +10,7 @@ const HeroNavbar = () => {
   return (
     <motion.nav
       animate={{ opacity: 1, y: 0 }}
-      className="z-20 flex items-center gap-2 md:gap-8 uppercase text-sm md:text-base font-medium my-4"
+      className="z-20 flex items-center gap-2 md:gap-8 uppercase text-sm md:text-base font-medium my-4 mt-20"
       initial={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.6, delay: 0.3 }}
     >
