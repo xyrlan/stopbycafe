@@ -7,7 +7,6 @@ import Link from "next/link";
 import { ArrowUpRightFromSquareIcon } from "lucide-react";
 
 import { Title } from "../title";
-import WheatDivider from "../wheatDivider";
 
 const ProductsCarousel = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -37,15 +36,13 @@ const ProductsCarousel = () => {
   ];
 
   const handleDragEnd = (event: any, info: { offset: { x: number } }) => {
-    const threshold = 100; // Sensibilidade do arraste
+    const threshold = 100;
 
     if (info.offset.x > threshold) {
-      // Arrastou para a direita
       setSelectedIndex((prevIndex) =>
         prevIndex === 0 ? data.length - 1 : prevIndex - 1,
       );
     } else if (info.offset.x < -threshold) {
-      // Arrastou para a esquerda
       setSelectedIndex((prevIndex) =>
         prevIndex === data.length - 1 ? 0 : prevIndex + 1,
       );
@@ -53,79 +50,87 @@ const ProductsCarousel = () => {
   };
 
   return (
-    <div className="md:container mx-auto overflow-hidden py-1">
+    <div className="container mx-auto overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={selectedIndex}
-          animate={{ opacity: 1 }}
-          className="flex md:flex-row flex-col justify-center items-center gap-20 max-md:gap-5"
+          animate={{ opacity: 1, y: 0 }}
+          className="flex md:flex-row flex-col justify-center items-center gap-20 max-md:gap-10"
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
-          exit={{ opacity: 0 }}
-          initial={{ opacity: 0 }}
-          transition={{ duration: 0.5 }}
+          exit={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 20 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           onDragEnd={handleDragEnd}
         >
           {/* Image Section */}
           <motion.div
             key={selectedIndex}
-            animate={{ x: 0 }}
-            className=" flex items-center justify-center"
-            exit={{ x: -50 }}
-            initial={{ x: -50 }}
-            transition={{ duration: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative flex items-center justify-center w-full md:w-1/2"
+            exit={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <Image
-              alt={data[selectedIndex].alt}
-              className="md:h-[300px] h-[200px] w-auto object-contain select-none"
-              draggable={false}
-              height={400}
-              src={data[selectedIndex].src}
-              width={400}
-            />
+            <div className="relative w-full aspect-square max-w-[400px]">
+              <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform -translate-y-4" />
+              <Image
+                fill
+                alt={data[selectedIndex].alt}
+                className="object-contain select-none relative z-10 p-8"
+                draggable={false}
+                src={data[selectedIndex].src}
+              />
+            </div>
           </motion.div>
+
           {/* Text Section */}
-          <div className=" flex items-center justify-center">
-            <div className="flex flex-col items-center gap-2 justify-center max-w-lg text-center">
-              <div>
-                <Title className="text-primary my-2 text-6xl">
-                  {data[selectedIndex].title}
-                </Title>
-              </div>
-              <WheatDivider />
-              <p className="tracking-wider text-primary font-light leading-relaxed lg:text-lg my-7 px-2 max-w-full">
+          <motion.div
+            className="flex items-center justify-center w-full md:w-1/2"
+            initial={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            <div className="flex flex-col items-center gap-6 justify-center max-w-lg text-center px-4">
+              <Title className="text-primary text-5xl font-light">
+                {data[selectedIndex].title}
+              </Title>
+              <p className="text-primary/80 text-lg font-light leading-relaxed">
                 {data[selectedIndex].description}
               </p>
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </AnimatePresence>
 
-      <div className="flex justify-center gap-4 mt-10">
+      {/* Navigation Dots */}
+      <div className="flex justify-center gap-3 mt-16">
         {data.map((_, index) => (
-          <Button
+          <button
             key={index}
-            className={`w-4 h-4 rounded-full ${
+            className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
               selectedIndex === index
-                ? "bg-secondary"
-                : "bg-primary-200 hover:bg-primary-100"
+                ? "bg-primary w-8"
+                : "bg-primary/20 hover:bg-primary/40"
             }`}
             onClick={() => setSelectedIndex(index)}
           />
         ))}
       </div>
 
-      {/* Navigation Buttons */}
-      <div className="flex justify-center">
+      {/* View Menu Button */}
+      <div className="flex justify-center mt-16">
         <Link href="/menu">
           <Button
-            className="mt-16 group hover:text-primary border border-primary/20 hover:bg-secondary/50 hover:border-primary/40 px-8 py-6 transition-all duration-300"
-            color="secondary"
+            className="group bg-transparent hover:bg-primary border border-primary/20 hover:border-primary text-primary px-8 py-6 transition-all duration-300"
             radius="sm"
-            variant="solid"
+            variant="bordered"
           >
-            <span>View Full Menu</span>
-            <ArrowUpRightFromSquareIcon size={16} />
+            <span className="font-light">View Full Menu</span>
+            <ArrowUpRightFromSquareIcon
+              className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1"
+              size={16}
+            />
           </Button>
         </Link>
       </div>
