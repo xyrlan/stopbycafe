@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion";
 import { useInView } from "framer-motion";
 
 import { Title } from "../title";
@@ -9,10 +9,20 @@ import { Title } from "../title";
 import AboutText from "./about-text";
 import AboutTitle from "./about-title";
 
-const AboutSection = () => {
-  const ref = React.useRef(null);
+interface AboutPic {
+  alt: string;
+  src: string;
+}
+
+const AboutSection: React.FC = () => {
+  const ref = React.useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "20%"]);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const aboutPics = [
+  const aboutPics: AboutPic[] = [
     {
       alt: "Stop by cafe",
       src: "/about/1.jpg",
@@ -35,11 +45,27 @@ const AboutSection = () => {
     <motion.section
       ref={ref}
       animate={{ opacity: 1 }}
-      className="overflow-hidden py-24 md:py-32 px-6 bg-gradient-to-b from-background to-secondary-50 relative"
+      className="overflow-hidden py-24 md:py-32 px-6 relative min-h-screen"
       id="about"
       initial={{ opacity: 0 }}
       transition={{ duration: 0.8 }}
     >
+      {/* Parallax Background Image */}
+      <motion.div 
+        style={{ y }}
+        className="absolute inset-0 w-full h-full"
+      >
+        <Image
+          src="/central-park.jpg"
+          alt="Central Park View"
+          fill
+          className="object-cover brightness-[0.85]"
+          priority
+          quality={100}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-secondary-50/95" />
+      </motion.div>
+
       <div className="sm:max-w-7xl mx-auto relative z-10">
         <motion.div
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -50,7 +76,7 @@ const AboutSection = () => {
           <AboutTitle />
           <motion.div
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            className="px-4 max-w-md text-primary/90 font-light italic text-lg"
+            className="px-6 py-4 max-w-md text-primary/90 font-light italic text-lg bg-white/10 backdrop-blur-sm rounded-sm shadow-lg"
             initial={{ opacity: 0, x: -50 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
@@ -67,13 +93,13 @@ const AboutSection = () => {
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h2 className="text-5xl md:text-7xl font-light text-primary/90 tracking-wide">
+          <h2 className="text-5xl md:text-7xl font-light text-primary/90 tracking-wide backdrop-blur-sm bg-white/5 p-6 rounded-sm inline-block">
             Where Every Bite Tells
             <br />
             <Title>
               <motion.span
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                className="  text-default"
+                className="text-default"
                 initial={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.7, delay: 0.6 }}
               >
@@ -94,14 +120,13 @@ const AboutSection = () => {
               <motion.div
                 key={index}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                className="flex flex-col justify-center items-center overflow-hidden transition-all duration-300 "
+                className="flex flex-col justify-center items-center overflow-hidden transition-all duration-300"
                 initial={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: 0.2 * index }}
-                // whileHover={{ scale: 1.02 }}
               >
                 <Image
                   alt={pic.alt}
-                  className="transform transition-all duration-1000 hover:scale-105 hover:brightness-110 shadow-lg ring-1 ring-primary/10 hover:ring-primary/30 "
+                  className="transform transition-all duration-1000 hover:scale-105 hover:brightness-110 shadow-lg ring-1 ring-primary/10 hover:ring-primary/30"
                   height={300}
                   src={pic.src}
                   width={400}
@@ -117,13 +142,6 @@ const AboutSection = () => {
             <AboutText />
           </motion.div>
         </div>
-        {/* <div className='grid grid-flow-col gap-4 '>
-          {aboutPics.map((pic, index) => (
-            <div key={index} className='flex flex-col justify-center items-center'>
-              <Image src={pic.src} alt={pic.alt} width={300} height={400} className='hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform duration-300 ease-in-out' />
-            </div>
-          ))}
-        </div> */}
       </div>
     </motion.section>
   );
