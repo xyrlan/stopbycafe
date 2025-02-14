@@ -75,7 +75,7 @@ const Item = ({ title, description, image, image2, isReverse, index }: any) => {
   return (
     <motion.div
       className={clsx(
-        "flex flex-col lg:flex-row max-lg:gap-8 max-lg:items-center overflow-hidden py-8",
+        "flex flex-col lg:flex-row max-lg:gap-6 items-center overflow-hidden py-6 lg:py-8",
         isReverse && "lg:flex-row-reverse",
       )}
       initial="hidden"
@@ -85,7 +85,7 @@ const Item = ({ title, description, image, image2, isReverse, index }: any) => {
     >
       <motion.div
         className={clsx(
-          "flex-1 relative group overflow-hidden flex justify-center select-none h-[300px]",
+          "flex-1 relative group overflow-hidden flex justify-center select-none h-[200px] md:h-[250px] lg:h-[300px] w-full",
         )}
         transition={{ duration: 0.5 }}
         variants={imageVariants}
@@ -97,27 +97,25 @@ const Item = ({ title, description, image, image2, isReverse, index }: any) => {
           whileHover={{ scale: 1.05 }}
         >
           <Image
+            fill
             alt={title}
-            className="object-cover absolute group-hover:opacity-0 duration-700 transition-all z-10 rounded-lg"
-            height={600}
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover absolute group-hover:opacity-0 md:group-hover:opacity-0 duration-700 transition-all z-10 rounded-lg"
+            priority={index < 2}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 40vw"
             src={image}
-            style={{ width: "100%", height: "100%" }}
-            width={600}
           />
           <Image
+            fill
             alt={title}
             className="object-cover transition-all duration-[3000ms] rounded-lg"
-            height={600}
-            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority={index < 2}
+            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 40vw"
             src={image2}
-            style={{ width: "100%", height: "100%" }}
-            width={600}
           />
         </motion.div>
       </motion.div>
       <motion.div
-        className="flex-1 flex flex-col justify-center items-center text-center gap-5 px-6"
+        className="flex-1 flex flex-col justify-center items-center text-center gap-4 lg:gap-5 px-4 lg:px-6"
         variants={textVariants}
       >
         <motion.div
@@ -125,9 +123,11 @@ const Item = ({ title, description, image, image2, isReverse, index }: any) => {
           transition={{ duration: 0.8 }}
           whileInView={{ opacity: 1 }}
         >
-          <Title className="text-primary text-5xl font-light">{title}</Title>
+          <Title className="text-primary text-3xl md:text-4xl lg:text-5xl font-light">
+            {title}
+          </Title>
         </motion.div>
-        <p className="text-primary/80 text-lg font-light leading-relaxed max-w-md">
+        <p className="text-primary/80 text-base md:text-lg font-light leading-relaxed max-w-md">
           {description}
         </p>
       </motion.div>
@@ -138,14 +138,14 @@ const Item = ({ title, description, image, image2, isReverse, index }: any) => {
 const PhotosNDescriptions = () => {
   return (
     <motion.div
-      className="max-md:hidden py-16"
+      className="py-8 md:py-12 lg:py-16"
       initial={{ opacity: 0 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
       whileInView={{ opacity: 1 }}
     >
       <motion.div
-        className="lg:grid lg:grid-cols-2 max-lg:gap-12 overflow-hidden"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 overflow-hidden px-4 lg:px-0"
         initial={{ opacity: 0 }}
         transition={{ duration: 0.8 }}
         whileInView={{ opacity: 1 }}
