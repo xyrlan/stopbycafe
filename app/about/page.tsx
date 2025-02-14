@@ -48,13 +48,13 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.8 }}
             >
-              <Title className="text-5xl md:text-7xl text-secondary brightness-110 mb-4">
+              <Title className="text-5xl md:text-7xl text-primary brightness-110 mb-4">
                 Our Story
               </Title>
             </motion.div>
             <motion.p
               animate={{ opacity: 1, y: 0 }}
-              className="text-lg md:text-xl text-secondary/90 max-w-2xl mx-auto font-light"
+              className="text-lg md:text-xl text-primary/90 max-w-2xl mx-auto font-light"
               initial={{ opacity: 0, y: 20 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >

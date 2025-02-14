@@ -122,7 +122,7 @@ const ProductsCarousel = () => {
       <div className="flex justify-center mt-16">
         <Link href="/menu">
           <Button
-            className="group bg-transparent hover:bg-primary border border-primary/20 hover:border-primary text-primary px-8 py-6 transition-all duration-300"
+            className="group bg-transparent hover:bg-secondary/20 border border-primary/20 hover:border-primary text-primary px-8 py-6 transition-all duration-300"
             radius="sm"
             variant="bordered"
           >

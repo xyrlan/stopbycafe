@@ -3,8 +3,6 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-import { Title } from "../title";
-
 const sweetsData = [
   {
     title: "Brigadeiro",
@@ -136,9 +134,15 @@ const BrazilianSweetsSection = () => {
           viewport={{ once: true }}
           whileInView={{ opacity: 1, y: 0 }}
         >
-          <Title className="text-primary text-4xl md:text-5xl mb-4">
+          {/* <Title className="text-primary text-4xl md:text-5xl mb-4">
             Brazilian Sweets
-          </Title>
+          </Title> */}
+          <div className="flex flex-col items-center gap-4 mb-4">
+            <div className="text-secondary/70 font-light tracking-widest text-sm">
+              BRAZILIAN SWEETS
+            </div>
+            <div className="w-px h-12 bg-gradient-to-b from-secondary/30 to-transparent" />
+          </div>
           <p className="text-primary/80 text-base md:text-lg font-light max-w-2xl mx-auto leading-relaxed">
             Discover the rich tradition of Brazilian brigadeiros - delightful
             sweets that are an essential part of any celebration in Brazil. Each
