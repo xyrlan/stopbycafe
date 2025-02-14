@@ -1,5 +1,7 @@
 "use client";
 import React from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 import { Title } from "@/components/title";
 import WheatDivider from "@/components/wheatDivider";
@@ -218,18 +220,43 @@ export default function MenuPage() {
   const sections = Object.values(menuData).map((section) => section.title);
 
   return (
-    <main className="min-h-screen bg-background relative py-20">
-      <div className="absolute inset-0 0 bg-gradient-to-b from-secondary-50 to-background pointer-events-none h-[30vh]" />
-      <div className="relative">
-        <div className="container mx-auto px-4 pt-20 pb-12 text-center">
-          <Title className="text-5xl md:text-6xl text-default mb-4">
-            Our Menu
-          </Title>
-          <p className="text-lg text-primary-600/70 max-w-2xl mx-auto">
-            Discover our selection of freshly baked goods, artisanal coffee, and
-            delightful treats
-          </p>
+    <main className="min-h-screen bg-background">
+      {/* Hero Section */}
+      <section className="relative h-[70vh] overflow-hidden">
+        <Image
+          fill
+          priority
+          alt="Stop By Cafe Location"
+          className="object-cover brightness-75"
+          quality={100}
+          src="/stoplocal.jpg"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/50 to-background" />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="text-center space-y-6 px-4">
+            <motion.div
+              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.8 }}
+            >
+              <Title className="text-5xl md:text-7xl text-primary brightness-110 mb-4">
+                Our Menu
+              </Title>
+            </motion.div>
+            <motion.p
+              animate={{ opacity: 1, y: 0 }}
+              className="text-lg md:text-xl text-primary/90 max-w-2xl mx-auto font-light"
+              initial={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              Discover our selection of freshly baked goods, artisanal coffee,
+              and delightful treats
+            </motion.p>
+          </div>
         </div>
+      </section>
+
+      <div className="relative">
         <MenuNav sections={sections} />
         <div className="pt-12 max-w-5xl mx-auto px-4">
           {Object.values(menuData).map((section) => (
