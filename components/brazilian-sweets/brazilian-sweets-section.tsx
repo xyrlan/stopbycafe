@@ -79,7 +79,7 @@ const SweetCard = ({
 }) => {
   return (
     <motion.div
-      className="relative group overflow-hidden rounded-xl"
+      className="relative group overflow-hidden "
       initial={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
       viewport={{ once: true, margin: "-50px" }}

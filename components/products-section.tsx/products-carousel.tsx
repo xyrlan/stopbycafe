@@ -72,7 +72,7 @@ const ProductsCarousel = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <div className="relative w-full aspect-square max-w-[400px]">
+            <div className="relative w-full aspect-square max-w-[250px] md:max-w-[400px]">
               <div className="absolute inset-0 bg-secondary/10 rounded-full blur-3xl transform -translate-y-4" />
               <Image
                 fill
