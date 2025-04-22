@@ -112,7 +112,7 @@ const AboutSection: React.FC = () => {
         <div className="flex md:flex-row flex-col justify-between gap-12 md:gap-24">
           <motion.div
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            className="grid grid-cols-2 gap-6 overflow-hidden w-3/5"
+            className="grid grid-cols-2 gap-6 overflow-hidden md:w-3/5"
             initial={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
