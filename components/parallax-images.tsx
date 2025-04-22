@@ -209,8 +209,8 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
             key={index}
             priority
             alt={`stop by cafe`}
-            className={`block border-8 border-secondary border-opacity-20 transition-all duration-500 ${
-              isAligned ? "mr-8" : "mr-16 md:mr-20 lg:mr-40 2xl:mr-60"
+            className={`block border-8 border-secondary border-opacity-20 transition-all max-md:scale-80 duration-500 ${
+              isAligned ? "mr-4 md:mr-8" : "mr-16 md:mr-20 lg:mr-40 2xl:mr-60"
             } ${
               !isAligned && index % 2 === 1
                 ? "transform translate-y-20 hover:translate-y-16"
