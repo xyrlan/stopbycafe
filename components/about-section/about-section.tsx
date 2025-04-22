@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, HTMLMotionProps } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "framer-motion";
 
 import { Title } from "../title";
@@ -51,17 +51,17 @@ const AboutSection: React.FC = () => {
       transition={{ duration: 0.8 }}
     >
       {/* Parallax Background Image */}
-      <motion.div 
-        style={{ y }}
-        className="absolute inset-0 w-full h-full"
+      <motion.div
+        className="absolute inset-0 w-full h-full top-0 overflow-hidden"
+        style={{ y: `-${y}` }}
       >
         <Image
-          src="/central-park.jpg"
-          alt="Central Park View"
           fill
-          className="object-cover brightness-[0.85]"
           priority
+          alt="Central Park View"
+          className="object-cover brightness-[0.85]"
           quality={100}
+          src="/central-park.jpg"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/80 to-secondary-50/95" />
       </motion.div>
@@ -93,7 +93,7 @@ const AboutSection: React.FC = () => {
           initial={{ opacity: 0, y: 50 }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <h2 className="text-5xl md:text-7xl font-light text-primary/90 tracking-wide backdrop-blur-sm bg-white/5 p-6 rounded-sm inline-block">
+          <h2 className="text-5xl md:text-7xl font-light text-primary/90 tracking-wide bg-white/5 p-6 rounded-sm inline-block">
             Where Every Bite Tells
             <br />
             <Title>
@@ -112,7 +112,7 @@ const AboutSection: React.FC = () => {
         <div className="flex md:flex-row flex-col justify-between gap-12 md:gap-24">
           <motion.div
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            className="grid grid-cols-2 gap-6 overflow-hidden"
+            className="grid grid-cols-2 gap-6 overflow-hidden w-3/5"
             initial={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
@@ -120,13 +120,13 @@ const AboutSection: React.FC = () => {
               <motion.div
                 key={index}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                className="flex flex-col justify-center items-center overflow-hidden transition-all duration-300"
+                className=" overflow-hidden transition-all duration-300 border-8 border-secondary border-opacity-20"
                 initial={{ opacity: 0, y: 50 }}
                 transition={{ duration: 0.6, delay: 0.2 * index }}
               >
                 <Image
                   alt={pic.alt}
-                  className="transform transition-all duration-1000 hover:scale-105 hover:brightness-110 shadow-lg ring-1 ring-primary/10 hover:ring-primary/30"
+                  className="transform transition-all duration-1000 hover:scale-105 hover:brightness-110 shadow-lg ring-1 ring-primary/10 hover:ring-primary/30 object-cover h-full w-full"
                   height={300}
                   src={pic.src}
                   width={400}

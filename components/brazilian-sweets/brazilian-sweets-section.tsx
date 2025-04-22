@@ -86,7 +86,7 @@ const SweetCard = ({
       whileInView={{ opacity: 1, y: 0 }}
     >
       <div className="relative aspect-square overflow-hidden max-w-[280px] mx-auto">
-        <div className="relative w-full h-full">
+        <div className="relative w-full h-full border-8 border-secondary border-opacity-20">
           <Image
             fill
             alt={sweet.title}
