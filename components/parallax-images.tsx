@@ -17,6 +17,8 @@ interface ParallaxProps {
 }
 
 export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
+  const [isDragging, setIsDragging] = useState(false);
+  const inertiaVelocity = useRef(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isAligned, setIsAligned] = useState(true);
   const baseX = useMotionValue(0);
@@ -90,48 +92,51 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
       return;
     }
 
-    const delta = Math.min(time - lastTime.current, 50); // Cap delta to prevent large jumps
+    const delta = Math.min(time - lastTime.current, 50);
 
     lastTime.current = time;
 
-    // Enhanced scroll velocity tracking
     const currentScroll = scrollY.get();
     const scrollDiff = currentScroll - lastScrollPosition.current;
 
     lastScrollPosition.current = currentScroll;
 
-    // Track velocity over time for smoother transitions
     velocityTracker.current.push(scrollDiff);
     if (velocityTracker.current.length > 5) {
       velocityTracker.current.shift();
     }
 
-    // Calculate average velocity for smoother direction changes
     const avgVelocity =
       velocityTracker.current.reduce((a, b) => a + b, 0) /
       velocityTracker.current.length;
 
-    // Smooth direction changes
     if (avgVelocity < -0.5) {
       directionFactor.current = Math.max(-1, directionFactor.current - 0.2);
     } else if (avgVelocity > 0.5) {
       directionFactor.current = Math.min(1, directionFactor.current + 0.2);
     }
 
-    // Enhanced movement calculation with dynamic acceleration and smoothing
     const scrollVelocityFactor = Math.min(Math.abs(velocityFactor.get()), 1.5);
     const baseSpeed = baseVelocity * (delta / 1000);
     const acceleration = isHovered
-      ? 0.6 // Slower when hovered
+      ? 0.6
       : 1 + scrollVelocityFactor * 0.1 * Math.min(Math.abs(avgVelocity), 1);
     const speedWithScroll = baseSpeed * acceleration;
 
-    // Apply movement with smooth transition
-    const moveBy = directionFactor.current * speedWithScroll;
-    const currentX = baseX.get();
-    const newX = wrapX(currentX + moveBy);
+    let moveBy = directionFactor.current * speedWithScroll;
 
-    baseX.set(newX);
+    // Se estiver arrastando, ignora movimento automático
+    if (!isDragging) {
+      // Aplica inércia se existir
+      if (Math.abs(inertiaVelocity.current) > 0.1) {
+        moveBy += inertiaVelocity.current;
+        inertiaVelocity.current *= 0.95; // desacelera aos poucos
+      }
+      const currentX = baseX.get();
+      const newX = wrapX(currentX + moveBy);
+
+      baseX.set(newX);
+    }
   });
 
   /**
@@ -197,8 +202,23 @@ export function ParallaxImages({ baseVelocity = 100 }: ParallaxProps) {
       <div className="absolute left-0 w-32 h-full bg-gradient-to-r from-secondary-50 to-transparent z-10" />
       <div className="absolute right-0 w-32 h-full bg-gradient-to-l from-secondary-50 to-transparent z-10" />
       <motion.div
-        className="flex flex-nowrap relative"
+        className="flex flex-nowrap relative cursor-grab active:cursor-grabbing"
+        drag="x"
+        dragConstraints={{ left: -Infinity, right: Infinity }}
+        dragElastic={0.1}
+        dragMomentum={false}
         style={{ x }}
+        onDrag={(event, info) => {
+          baseX.set(baseX.get() + info.delta.x);
+        }}
+        onDragEnd={(event, info) => {
+          setIsDragging(false);
+          inertiaVelocity.current = info.velocity.x / 60; // escala a velocidade para suavidade
+        }}
+        onDragStart={() => {
+          setIsDragging(true);
+          inertiaVelocity.current = 0; // zera inércia ao começar o drag
+        }}
         onHoverEnd={() => setIsHovered(false)}
         onHoverStart={() => setIsHovered(true)}
       >
