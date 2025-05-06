@@ -67,7 +67,7 @@ const Footer = () => {
                   📧
                 </span>
                 <span className="group-hover:text-primary transition-colors">
-                  stopbycafe@gmail.com
+                  stopbycaffe@gmail.com
                 </span>
               </motion.p>
               <motion.div
@@ -79,8 +79,9 @@ const Footer = () => {
                   🕒
                 </span>
                 <div className="group-hover:text-primary transition-colors">
-                  <p>Monday to Friday, 8:00 AM to 5:00 PM</p>
-                  <p>Saturday and Sunday, 9:00 AM to 5:00 PM</p>
+                  <p>Monday to Friday, 7:30 AM to 6:00 PM</p>
+                  <p>Saturday, 9:00 AM to 6:00 PM</p>
+                  <p>Sunday, 9:00 AM to 5:00 PM</p>
                 </div>
               </motion.div>
             </div>
